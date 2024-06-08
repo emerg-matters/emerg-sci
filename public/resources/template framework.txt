@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+First decide if the patient is eligible:
+Inclusion criteria
+Exclusion criteria
+
+If the patient is eligible:
+Do you have authorisation to  enrol?
+	(For example)
+“No formal training is required to enrol the patient.  Clinicians are authorised. Simply follow the steps below
+“Formal training and addition to the study delegation log is required to be authorised to enrol to this study.  If you are authorised, please proceed with steps below.   If you are not on the delegation log, please consult sharepoint forlder x-x-x and consult with Epic to find someone on shift who is authorised to enrol
+Gain verbal consent in principle before proceeding.  Explain - &tc.
+-	Etc
+-	Etc
+
+Step by step guide to recruitment:
+Formal consent documentation
+	With capacity –
+patient information to be provided
+forms to be signed
+	Without capacity –
+		Steps to take
+		Forms to be signed
+
+Randomisation
+	How to do it:
+
+Actions
+Treatment steps (if relevant)
+Completion documentation
+
+
+
+</body>
+</html>

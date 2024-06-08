@@ -1,0 +1,179 @@
+
+/* main page layout  */
+
+body {
+  background-color: #3b404e;
+  position:relative
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 0.875em;
+
+  }
+
+
+/* formatting for flexbox layouts  */
+
+.containerFlexbox {
+  background-color: gray;
+}
+
+.column {
+  background-color: white;
+  border: 5px solid white;
+  padding: 2px;
+}
+
+
+
+
+
+
+
+/* fomratting homepage buttons */
+
+button:hover {
+  background-color: green;
+}
+
+
+/*  card view styling for I have a patient with...  */
+
+.card {
+  box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 15px; /* 5px rounded corners */
+  padding: 20px;
+  margin:30px;
+}
+
+
+.card2 {
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 15px; /* 5px rounded corners */
+  padding: 10px;
+  margin: 10px;
+}
+
+
+
+
+
+.interstitial-card  {
+  box-shadow: 0 8px 10px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 15px; /* 5px rounded corners */
+  padding: 10px;
+  margin:10px;
+}
+
+
+
+
+
+
+img {
+ /* empty right now */
+}
+
+
+
+
+/* formatting the columns - */
+
+.leftwardPanel {
+
+}
+
+.centralPanel {
+
+}
+
+.rightwardPanel  {
+
+}
+
+
+
+h4 {
+font-size: 18px;
+}
+
+
+h5 {
+padding-bottom: 0.2em; margin-bottom: 0.2em;
+font-size: 16px; }
+
+ul {
+padding-top: 02.em;  margin-bottom: 0.2em;
+}
+
+ol  {
+padding-top: 02.em;  margin-bottom: 0.2em;
+}
+
+ul{
+   margin-top: px;
+   padding-top: 0px;
+}
+
+ol {
+     margin-top: px;
+     padding-top: 0px;
+}
+
+
+h1 {
+    padding-top: 2em;
+}
+
+h4 {
+    margin-bottom: 0px;
+    padding-bottom:0.5px;
+}
+
+p {
+font-size: 16px;
+}
+
+li {
+font-size: 16px;
+}
+
+a {
+font-size: 16px;
+}
+
+/* css to move the training card to the bottom of the div  */
+#header {
+  position: relative;
+  min-height: 150px;
+}
+
+#header {
+  position: absolute;
+  bottom: 0;
+}
+
+
+
+li {
+padding-top: 4px;
+}
+
+
+p.container {
+font-size: 1.2em;
+}
+
+#posterImage {
+ display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+/* Dont put anything after this  */

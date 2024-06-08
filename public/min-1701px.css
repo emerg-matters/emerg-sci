@@ -1,0 +1,152 @@
+@media only screen and (min-width: 1701px) {
+
+
+  /* Layout for the overall flexbox columnar structure  */
+
+  .containerFlexbox {
+    display: flex;
+    width: 100%;
+    max-width:1700px;
+    margin:0 auto;
+  }
+
+  .column {
+    flex: 1;
+    color: white;
+  }
+
+
+img.locationImg {
+max-width:30%;
+padding-top: 1em; padding-bottom: 2em;
+
+}
+
+img.qrcImg  {
+max-width:22%;
+padding-top: 1em; padding-bottom: 1em; padding-left: 4%; padding-right: 4%;
+background-color: white;
+}
+
+
+
+  /*  ------------------------       panel elements and whole site settings           -------------------------------- */
+
+  h1 {
+    color:black;
+    font-size: 3em;
+
+  }
+
+  p {
+    color:black;
+  }
+
+ul{
+   margin: 0;
+   padding: 1em; /* Set the distance from the list edge to 1x the font size */
+}
+
+ol {
+    margin: 0;
+    padding: 1em; /* Set the distance from the list edge to 1x the font size */
+}
+
+
+
+
+
+/*  ------------------------           individual elements             -------------------------------- */
+
+
+
+
+
+
+
+
+    /* formatting the columns */
+
+.leftwardPanel {
+    background-color: pink;
+}
+
+
+.centralPanel {
+   /*empty so far */
+}
+
+
+#rightSideInfoPanel {
+border-left: 1px solid #572563;
+border-top: 0px;
+}
+
+
+
+
+
+
+/*  ------------------------           individual elements             -------------------------------- */
+
+
+
+#training {
+padding-right: 60px;
+padding-left: 60px;
+}
+
+
+
+
+#emerg-sci-legend-title {
+display: block;
+
+
+}
+
+#ED-research-team-details-top {
+Display: block;
+}
+
+#ED-research-team-details-bottom {
+border-top: 1px solid #ffffff;
+padding-top: 4em;
+}
+
+
+
+
+.RedBox {
+padding:40px;
+margin: 40px;
+border-style: solid;
+border-color: red;
+}
+
+
+
+#trainingTitle {
+font-size: 40px;
+color:red;
+padding:40px;
+}
+
+#trainingBlurb {
+font-size: 20px;
+color:red;
+padding-left:40px;
+}
+
+/*  GCP in training page */
+GCPtext {
+font-size: 4em;
+}
+
+GCPlogo {
+height: 2em;
+}
+
+
+  /*  Don't add anything below this curly bracket */
+}

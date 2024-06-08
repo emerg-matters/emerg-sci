@@ -1,0 +1,133 @@
+@media only screen and (min-width: 481px) {
+
+
+  /* Layout for the overall flexbox columnar structure  */
+
+  .containerFlexbox {
+    display: block;
+    width: 100%;
+    max-width:370px;
+    margin: 0 auto;
+  }
+
+  .column {
+
+  }
+
+
+
+/*  ------------------------       panel elements and whole site settings           -------------------------------- */
+
+  h1 {
+    color:black;
+     margin-top:0px;
+    padding-top:0px;
+  }
+
+  p {
+    color:black;
+  }
+
+/* -------------  Reduce the default margin ol and ul ------------- */
+
+
+ul{
+   margin: 0;
+   padding: 1em; /* Set the distance from the list edge to 1x the font size */
+}
+
+ol {
+    margin: 0;
+    padding: 1em; /* Set the distance from the list edge to 1x the font size */
+}
+
+
+
+img.locationImg {
+max-width:50%;
+padding-top: 1em; padding-bottom: 2em;
+}
+
+img.qrcImg  {
+width:44%;
+padding-top: 1em; padding-bottom: 1em; padding-left: 3%; padding-right: %m;
+background-color: white;
+}
+
+
+    /* formatting the columns */
+
+.leftwardPanel {
+   background-color: black;
+}
+
+
+.centralPanel {
+   /*empty so far */
+}
+
+
+#rightSideInfoPanel {
+border-top: 1px solid #572563;
+border-left: 0px;
+
+}
+
+
+
+/*  ------------------------           individual elements             -------------------------------- */
+
+
+#training {
+padding-left:20px;
+padding-right: 20px;
+}
+
+#emerg-sci-legend-title {
+display: block}
+
+#ED-research-team-details-top {
+Display: block;
+}
+
+#ED-research-team-details-bottom {
+border-top: 1px solid #572563;
+padding-top: 1em;
+}
+
+
+.RedBox {
+padding-top:20px;
+padding-bottom:20px;
+padding-left:4px;
+padding-right:4px;
+margin: 10px;
+border-style: solid;
+border-color: red;
+}
+
+
+#trainingTitle {
+font-size: 40px;
+color: red;
+
+}
+
+#trainingBlurb {
+font-size: 20px;
+color: red;
+margin-top: -40px;
+
+}
+
+GCPtext {
+font-size: 2em;
+}
+
+GCPlogo {
+height: 2em;
+}
+
+
+  /*  Don't add anything below this curly bracket */
+}

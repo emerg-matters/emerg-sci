@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <title>Emerg Sci: DRAFT 3</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <META NAME="robots" CONTENT="noindex">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="stylesheet" href="css/ie.css">
+    <![endif]-->
+
+
+
+
+    <link href="max-480px.css" media="(max-width: 480px)" rel="stylesheet">
+    <link href="min-481px.css" media="(min-width: 481px)" rel="stylesheet">
+    <link href="min-769px.css" media="(min-width: 769px)" rel="stylesheet">
+    <link href="min-1025px.css" media="(min-width: 1025px)" rel="stylesheet">
+    <link href="min-1201px.css" media="(min-width: 1201px)" rel="stylesheet">
+    <link href="min-1701px.css" media="(min-width: 1701px)" rel="stylesheet">
+    <link href="main-style.css" rel="stylesheet">
+
+
+    <!-- Adding cabin google font to the page-->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet"/>
+
+</head>
+<body style="background-color: #ffffff;">
+<div class="study-page-layout"  style="max-width:600px; margin:auto;" >
+
+<div style="background-color: #ffffff; padding: 20px">
+
+
+    <img src="images/draft3-logo.png"
+         style="max-width: 20vW">
+
+
+
+    <p>Comparing cast versus removable splint for adults with a distal radius fracture that does not require manipulation</p>
+
+    <h4>Inclusion Criteria:</h4>
+    <ul>
+        <li>Participant is willing and able to give informed consent for participation in the study</li>
+        <li>Aged 16 years or above</li>
+        <li>Presenting with a fracture of the distal radius which, in the opinion of the treating clinician, does not require a manipulation of the fracture</li>
+    </ul>
+
+    <h4>Exclusion Criteria:</h4>
+    <ul>
+    <p>The participant may not enter the study if any one of the following apply:</p>
+        <li>They present to research team more than 2 weeks post-injury</li>
+        <li>The fracture is open (Gustilo and Anderson >1) </li>
+        <li>They are unable to adhere to trial procedures, e.g. patients with permanent cognitive impairment, or other concomitant severe injuries e.g. head injury</li>
+    </ul>
+
+
+
+    <!--
+    <h4 style="color: red;"><i>All per patient paperwork is kept in the Research Documentation Rack opposite Room 3 in Resus (near the blood fridge).</i></h4>
+    -->
+
+
+    <h4 style="padding-bottom:0px; margin-bottom:0px; ">If the patient is eligible:</h4>
+
+    <!-- reusable text element for general verbal consent element - remember to add the js call-->
+    <test-custom-el></test-custom-el>
+
+
+
+
+    <h4><b>Step by Step Guide to Recruitment:</b> </h4>
+
+    <h5>in normal working hours Monday to Friday</h5>
+    <ul>
+    <li>Please contact the ED Research Team via EPIC chat when an eligible patient presents to ED</li>
+    </ul>
+
+    <h5>Recruitment out of hours and at weekends:</h5>
+
+    <ol>
+        <li>Using an ipad or smartphone access the following website: <a href="https://draft3.digitrial.com/#">The DRAFT3-CASP Study (digitrial.com)</a></li>
+        <li>Click on ‘Patient Information Site’ link to open the patient information page in a new tab. Allow the patient to read through it or view the video</li>
+        <li>Go back to the homepage on the previous tab (or use the same link above again to re-open) and click ‘Enrol a new patient’</li>
+        <li>Complete the questionnaires with the patient</li>
+        <p>**Please note that the first set of questionnaires aims to assess the patient’s level of ability PRIOR to the injury**</p>
+        <li>Once all the necessary data has been captured you will then be given the treatment allocation</li>
+        <li>Document this decision in the notes using either of the following Smartphrases - .DRAFT3CAST or .DRAFT3SPLINT</li>
+        <li>Provide the patient with a Rehab Booklet or ask the Research Team to do this retrospectively via e-mail</li>
+        <li>Inform the clinician looking after the patient if this is not you</li>
+        <li>Send the ED Research Team an EPIC message with the patients details attached, and the team will pick it up the following day</li>
+    </ol>
+
+
+
+    <h4>Link for further information:</h4>
+
+    <a style="text-decoration:none;" href="https://draft3.digitrial.com">Click here for trial website</a> <br>
+    <a style="text-decoration:none;" href="https://player.vimeo.com/video/798723387">Click here for a 2 minute video animation to explain the study</a>
+
+
+
+    <p>Training: Please contact the ED Research Team (cuh.edresearchteam@nhs.net) for further information if you would like to be actively involved in recruitment to this Trial<br>
+        Send the ED Research Team a message via Epic chat "ED research Team" or phone 217907</p>
+
+
+
+</div>
+
+</div>
+
+<!-- script for reusable text elements -->
+<script src="js/reusabletext.js"></script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBnynr-TnZ3j1XPFanXPsp6yHMnKfyv_2A",
+    authDomain: "emerg-sci.firebaseapp.com",
+    projectId: "emerg-sci",
+    storageBucket: "emerg-sci.appspot.com",
+    messagingSenderId: "323941930988",
+    appId: "1:323941930988:web:d20fe9625921f8358952c9",
+    measurementId: "G-5TJQS2QVQ7"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+</script>
+
+
+</body>
+</html>

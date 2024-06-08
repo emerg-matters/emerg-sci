@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <title>Emerg Sci: ASPECT trial</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <META NAME="robots" CONTENT="noindex">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+    <![endif]-->
+
+
+
+
+    <link href="max-480px.css" media="(max-width: 480px)" rel="stylesheet">
+    <link href="min-481px.css" media="(min-width: 481px)" rel="stylesheet">
+    <link href="min-769px.css" media="(min-width: 769px)" rel="stylesheet">
+    <link href="min-1025px.css" media="(min-width: 1025px)" rel="stylesheet">
+    <link href="min-1201px.css" media="(min-width: 1201px)" rel="stylesheet">
+    <link href="min-1701px.css" media="(min-width: 1701px)" rel="stylesheet">
+    <link href="main-style.css" rel="stylesheet">
+
+
+    <!-- Adding cabin google font to the page-->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet"/>
+
+</head>
+<body style="background-color: #ffffff;">
+<div class="study-page-layout"  style="max-width:600px; margin:auto;" >
+
+<div style="background-color: #ffffff; padding: 20px">
+
+    <!--  !! First change the tab title in the <head> section -->
+
+
+    <!-- trial logo -->
+    <img src="images/ASPECT-logo-cropped.jpg" alt="ASPECT trial logo image"
+         style="max-width: 20vW; max-height: 10vH;">
+
+
+
+    <p>Aspirin after hospitalisation with Pneumonia to prevent cardiovascular Events        randomised Controlled Trial (ASPECT)
+    </p>
+
+
+    <h4>Inclusion Criteria:</h4>
+    <ul>
+        <li>Participants (aged ≥ 50 years)</li>
+        <li>Admitted to hospital with pneumonia or decision to admit</li>
+        <li>Symptoms and signs of acute lower respiratory tract infection</li>
+        <li>Radiographic changes in keeping with infection on chest radiograph, CT scan or lung ultrasound scan</li>
+
+
+    </ul>
+
+    <h4>Exclusion Criteria:</h4>
+    <ul>
+        <li>Already taking regular prescribed anti-platelet* medication, including aspirin, clopidogrel,
+            cangrelor, selexipag, cilostazol, dipyridamole, prasugrel, ticagrelor, abciximab, eptifibatide,
+            tirofiban, epoprostenol, iloprost;</li>
+        <li>A known allergy, previous important adverse reaction, or contraindication to aspirin.</li>
+        <li>At high risk of excessive bleeding (e.g. large trauma or haemorrhage or urgent need for
+            major surgery or uncorrectable coagulopathy) in the opinion of the treating physician.</li>
+        <li>Hospital acquired pneumonia, defined as related to an inpatient hospital stay within the
+            last 10 days or acquired at least 48 hours after current admission.</li>
+        <li>Discharged without a ‘Decision to Admit’ to hospital by urgent care/emergency department</li>
+        <li>Unlikely to tolerate/adhere to medication regimen.</li>
+        <li>Prisoners.</li>
+        <li>Known to be pregnant.</li>
+        <li>Life expectancy less than 3 months due to pre-existing condition (e.g. terminal malignancy).</li>
+        <li>Presentation more likely due to acute COVID-19 pneumonitis in the opinion of the treating
+            physician. i.e. newly positive Polymerase Chain Reaction (PCR) or similar antigen test for
+            COVID-19;</li>
+        <li>Enrolment onto another study where the burden on the participant will be too high if they
+            are enrolled onto both. Or, if the enrolment onto both would compromise one or both of
+            the study’s objectives.</li>
+
+        <p>*Anti-coagulation medication is not an exclusion, however the increased bleeding risk should be considered by the clinician. For more details see section 5.6.8</p>
+
+    </ul>
+
+
+
+
+
+    <h4 style="padding-bottom:0px; margin-bottom:0px; ">If the patient is eligible:</h4>
+
+    <!-- reusable text element for general verbal consent element - remember to add the js call-->
+    <test-custom-el></test-custom-el>
+
+
+    <h4><b>Step by Step Guide to Recruitment:</b> </h4>
+
+    <h5>In standard working hours; 9-5</h5>
+    <ul>
+        <li>Please contact the ED Research Team when eligible patients arrive in ED:<br>
+            Send the ED Research Team a message via Epic chat "ED research Team" or phone 217907</li>
+        <li>The ED Research team will see the patient to arrange consent and randomisation.</li>
+
+    </ul>
+
+    <h5>Out of hours and weekends:</h5>
+    <ul>
+        <li>Please send the ED Research team an EPIC message with the patient's details, as they have 7 days from admission to approach the patient to discuss the trial.</li>
+
+    </ul>
+
+
+    <!-- Handy pictures
+
+      <img src="images/comited-amb_bay_rack.png"  class="locationImg">
+      <img src="images/comited-reception_box_180k.jpg" class="locationImg">
+      <img src="images/ED-Research-cupboard.jpg" class="locationImg">
+
+     -->
+
+<!--
+
+    <h4>Links for further information:</h4>
+
+    <a style="text-decoration:none;" href="">Link text</a><br>
+
+    <a style="text-decoration:none;" href="https://www.emergeresearch.org/trial/aspired/">Aspired Study - documents</a>
+-->
+
+ <br>
+    <br>
+
+
+
+
+</div>
+
+</div>
+<script src="js/reusabletext.js"></script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBnynr-TnZ3j1XPFanXPsp6yHMnKfyv_2A",
+    authDomain: "emerg-sci.firebaseapp.com",
+    projectId: "emerg-sci",
+    storageBucket: "emerg-sci.appspot.com",
+    messagingSenderId: "323941930988",
+    appId: "1:323941930988:web:d20fe9625921f8358952c9",
+    measurementId: "G-5TJQS2QVQ7"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+</script>
+
+
+</body>
+</html>

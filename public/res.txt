@@ -1,0 +1,27 @@
+
+Unicode special chars:
+https://www.w3schools.com/charsets/ref_utf_math.asp
+
+Centre elements
+http://howtocenterincss.com
+
+Fonts used for visual assets:  All google
+Cabin for body and headers
+Orbitron reg for logo
+
+Google search console - checked and not indexed on 30/10/23; check back again on
+https://search.google.com/search-console?resource_id=https%3A%2F%2Femerg-sci.web.app%2F
+Keep indexing to homepage only
+
+https://www.favicon-generator.org/
+
+neon colours:
+https://offeo.com/learn/neon-color-pallete#:~:text=Neon%20color%20palettes%20have%20neon,hues%20have%20hex%20color%20codes.
+
+Colour blender:
+https://meyerweb.com/eric/tools/color-blend/#8CC9AA:00FF33:1:hex
+
+https://coolors.co
+helps
+
+Mix prominent study colour with nearest neon colour
