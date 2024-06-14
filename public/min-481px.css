@@ -78,6 +78,11 @@ border-left: 0px;
 /*  ------------------------           individual elements             -------------------------------- */
 
 
+#eureca-logo {
+    display: none;
+}
+
+
 #training {
 padding-left:20px;
 padding-right: 20px;

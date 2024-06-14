@@ -22,6 +22,14 @@
 
  /*  ------------------------       panel elements and whole site settings           -------------------------------- */
 
+#eureca-logo {
+    display: block;
+    max-width: 33%;
+    padding-right: 8px;
+    padding-bottom:8px;
+    margin: 0 auto;
+}
+
   h1 {
     color:black;
   }
