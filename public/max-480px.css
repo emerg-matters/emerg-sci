@@ -109,14 +109,14 @@ padding-right:4px;
 }
 
 .ident-row-images {
-height: 1.5vH
+height: 4vH
 }
 
 .RedBox {
 padding-top:20px;
 padding-bottom:20px;
-padding-left:4px;
-padding-right:4px;
+padding-left:12px;
+padding-right:12px;
 border-style: solid;
 border-color: red;
 }
