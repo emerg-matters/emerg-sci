@@ -96,6 +96,10 @@ border-top: 1px solid #ffffff;
 padding-top: 4em;
 }
 
+.ident-row {
+padding:40px;
+margin: 40px;
+}
 
 .RedBox {
 padding:40px;

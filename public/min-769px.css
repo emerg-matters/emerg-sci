@@ -108,7 +108,10 @@ padding-top: 4em;
 }
 
 
-
+.ident-row {
+padding:20px;
+margin: 20px;
+}
 
 .RedBox {
 padding:20px;

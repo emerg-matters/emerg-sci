@@ -100,6 +100,13 @@ border-top: 1px solid #572563;
 padding-top: 1em;
 }
 
+.ident-row {
+padding-top:20px;
+padding-bottom:20px;
+padding-left:4px;
+padding-right:4px;
+margin: 10px;
+}
 
 .RedBox {
 padding-top:20px;
