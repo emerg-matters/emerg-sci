@@ -11,7 +11,7 @@
 
 
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <link rel="stylesheet" href="css/ie.css">
+
 
 
 
@@ -24,6 +24,7 @@
     <link href="min-1701px.css" media="(min-width: 1701px)" rel="stylesheet">
     <link href="main-style.css" rel="stylesheet">
 
+    <link href="main-nav-style.css" rel="stylesheet">
 
     <!-- Adding cabin google font to the page-->
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -34,10 +35,31 @@
 <body style="background-color: #ffffff;">
 <div class="study-page-layout"  style="max-width:600px; margin:auto;" >
 
-<div style="background-color: #ffffff; padding: 20px">
+
+
+    <nav class="navbar" >   <!-- This nav bar is all set up so identity logo could go to left; and nav buttons to right.  -->
+        <div>
+            <div class="navContainer">
+                <!-- <div class="banner" id="parent"> <div class="ChapterTitle" id="child"></div> -->  <!-- /banner-->
+            </div>
+            <!-- /navContainer -->
+        </div>
+
+        <div class="nav-links" >
+
+            <a href="index.html" class="logo">
+                <img src="images/emerg-sci-logo-newV3.png" alt="emres logo">
+
+                <a href="index.html" class="logo">
+                    <img alt="Home Page Button" src="images/nav_home_icon.png"> </a>
+            </a>
+            <!--   Search button; should the day come it's needed. <a href="searchPage.html" class="logo">   <img alt="Search Button" src=""> </a>   -->
+        </div>
+    </nav>
+    <br><br>
 
     <img src="images/crash4cropped.png"
-         style="max-width: 20vW">
+         style="max-width: 20vW; max-height: 5vH" alt="Crash 4 study logo">
 
 
     <h4>Clinical Randomisation of an Anti-fibrinolytic in Symptomatic mild Head injury in older adults</h4>
@@ -90,12 +112,12 @@
     <ol>
         <li>Collect paperwork from magazine rack in ambulance bay near the automatic doors</li>
 
-        <img src="images/comited-amb_bay_rack.png" class="locationImg">
+        <img src="images/comited-amb_bay_rack.png" class="locationImg" alt="ambulance bay document rack">
 
         <li>Consent Patient (or obtain from family member or an uninvolved Dr who can act as Professional Representative if patient lacks capacity) and provide Patient Information Sheet</li>
         <li>Obtain syringe pack from the Research cupboard in Area B – take the next pack in numerical order (key to unlock cupboard is with the resus room nurse in charge)</li>
 
-        <img src="images/Crash4-Area-B-cupboard.jpg" class="locationImg">
+        <img src="images/Crash4-Area-B-cupboard.jpg" class="locationImg" alt="Drug cupboard location">
 
         <li>Find a Dr able to prescribe (see link)</li>
         <li>Place order using “CRASH4” and type in trial pack number from the above pack (xxxx/xxx)</li>
@@ -124,7 +146,7 @@
 
 
 </div>
-</div>
+
 
 <!-- script for reusable text elements -->
 <script src="js/reusabletext.js"></script>

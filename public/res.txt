@@ -21,6 +21,13 @@ https://offeo.com/learn/neon-color-pallete#:~:text=Neon%20color%20palettes%20hav
 Colour blender:
 https://meyerweb.com/eric/tools/color-blend/#8CC9AA:00FF33:1:hex
 
+Colours of the 9dot logo top left and bottom right
+#C0250A
+#613886
+
+Background colours
+blue #253766
+
 https://coolors.co
 helps
 

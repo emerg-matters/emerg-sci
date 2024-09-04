@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <title>Emerg Sci: uDCD</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <META NAME="robots" CONTENT="noindex">
+
+
+    <link href="max-480px.css" media="(max-width: 480px)" rel="stylesheet">
+    <link href="min-481px.css" media="(min-width: 481px)" rel="stylesheet">
+    <link href="min-769px.css" media="(min-width: 769px)" rel="stylesheet">
+    <link href="min-1025px.css" media="(min-width: 1025px)" rel="stylesheet">
+    <link href="min-1201px.css" media="(min-width: 1201px)" rel="stylesheet">
+    <link href="min-1701px.css" media="(min-width: 1701px)" rel="stylesheet">
+    <link href="main-style.css" rel="stylesheet">
+
+    <link href="main-nav-style.css" rel="stylesheet">
+
+
+
+    <!-- Adding cabin google font to the page-->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet"/>
+
+</head>
+<body style="background-color: #ffffff;">
+<div class="study-page-layout" style="max-width:600px; margin:auto;">
+
+    <nav class="navbar" >   <!-- This nav bar is all set up so identity logo could go to left; and nav buttons to right.  -->
+        <div>
+            <div class="navContainer">
+                <!-- <div class="banner" id="parent"> <div class="ChapterTitle" id="child"></div> -->  <!-- /banner-->
+            </div>
+            <!-- /navContainer -->
+        </div>
+
+        <div class="nav-links" >
+
+            <a href="index.html" class="logo">
+                <img alt="Back Button" src="images/emerg-sci-logo-newV3.png" alt="emres logo">
+
+                <a href="index.html" class="logo">
+                    <img alt="Home Page Button" src="images/nav_home_icon.png"> </a>
+            </a>
+            <!--   Search button; should the day come it's needed. <a href="searchPage.html" class="logo">   <img alt="Search Button" src=""> </a>   -->
+        </div>
+    </nav>
+    <br><br>
+
+
+    <img src="images/uDCD_logo_02Jul24%20(1).png" alt="Study logo goes here" style="max-width: 20vW; max-height: 12vH;">
+
+
+    <p style="padding-bottom: 0px; margin-bottom: 0px; ">uDCD - A Feasibility Study of Uncontrolled Donation After Circulatory Death
+    </p>
+
+<br>
+    <br>
+
+<img src="images/udcd-checklist-colour.png" style="width:95%; max-width: 600px; margin: auto; ">
+
+
+
+
+</div>
+
+
+<!-- script for reusable text elements -->
+<script src="js/reusabletext.js"></script>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBnynr-TnZ3j1XPFanXPsp6yHMnKfyv_2A",
+      authDomain: "emerg-sci.firebaseapp.com",
+      projectId: "emerg-sci",
+      storageBucket: "emerg-sci.appspot.com",
+      messagingSenderId: "323941930988",
+      appId: "1:323941930988:web:d20fe9625921f8358952c9",
+      measurementId: "G-5TJQS2QVQ7"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+</script>
+
+
+</body>
+</html>
