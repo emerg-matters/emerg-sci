@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <title>Emerg Sci: BACH-b</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <META NAME="robots" CONTENT="noindex">
+
+
+
+    <link href="max-480px.css" media="(max-width: 480px)" rel="stylesheet">
+    <link href="min-481px.css" media="(min-width: 481px)" rel="stylesheet">
+    <link href="min-769px.css" media="(min-width: 769px)" rel="stylesheet">
+    <link href="min-1025px.css" media="(min-width: 1025px)" rel="stylesheet">
+    <link href="min-1201px.css" media="(min-width: 1201px)" rel="stylesheet">
+    <link href="min-1701px.css" media="(min-width: 1701px)" rel="stylesheet">
+    <link href="main-style.css" rel="stylesheet">
+
+    <link href="main-nav-style.css" rel="stylesheet">
+
+
+    <!-- Adding cabin google font to the page-->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet"/>
+
+</head>
+<body style="background-color: #ffffff;">
+<div class="study-page-layout"  style="max-width:600px; margin:auto;" >
+
+    <nav class="navbar" >   <!-- This nav bar is all set up so identity logo could go to left; and nav buttons to right.  -->
+        <div>
+            <div class="navContainer">
+                <!-- <div class="banner" id="parent"> <div class="ChapterTitle" id="child"></div> -->  <!-- /banner-->
+            </div>
+            <!-- /navContainer -->
+        </div>
+
+        <div class="nav-links" >
+
+            <a href="index.html" class="logo">
+                <img alt="Back Button" src="images/emerg-sci-logo-newV3.png" >
+
+                <a href="index.html" class="logo">
+                    <img alt="Home Page Button" src="images/nav_home_icon.png"> </a>
+            </a>
+            <!--   Search button; should the day come it's needed. <a href="searchPage.html" class="logo">   <img alt="Search Button" src=""> </a>   -->
+        </div>
+    </nav>
+    <br><br>
+
+
+
+    <img src="images/BACH-b-trial-logo.jpg" alt="BACH-b Study logo"         style="max-width: 20vW; max-height: 12vH;">
+
+
+
+
+    <p>Breathing Assistance in CHildren with bronchiolitis (BACHb): a group-sequential two-stratum multicentre open-label randomised clinical trial of respiratory support in infants with acute bronchiolitis</p>
+
+
+    <h1>Eligibility</h1>
+
+
+    <h4>Local study conflicts</h4>
+    <ul>
+
+        <li>None: Co-enrolment with observational studies is permitted without prior agreemen</li>   </ul>
+
+    <h4>Inclusion Criteria:</h4>
+    <ol>
+        <li>Hospitalised infant aged <12 months with a clinical diagnosis of acute bronchiolitis <br><br>AND</li>
+            <br>
+            <li>Clinically assessed at least twice, 15 minutes apart, to have severe respiratory distress (respiratory rate >70/min, or grunting, or marked chest recession) and/or recurrent short apnoeas (>3 per hour, each apnoea lasting <10 sec)</li>
+    </ol>
+
+    <h4>Exclusion Criteria:</h4>
+    <ul>
+        <li>Clinical decision that patient needs immediate intubation and ventilation for life-threatening hypoxaemia, shock or decreased conscious level.</li>
+
+        <li>Prolonged apnoeas (>10 seconds needing stimulation).</li>
+
+        <li>Ongoing active air leak (pneumothorax, pneumomediastinum).</li>
+
+        <li>Received HSO, HFNC or CPAP for over 2 hours in the previous 24 hours.</li>
+
+        <li>On home ventilation prior to hospital admission.</li>
+
+        <li>Tracheostomy in place.</li>
+
+        <li>Choanal atresia/stenosis, midfacial anomalies or recent craniofacial surgery.</li>
+
+        <li>Previously recruited to the BACHb trial in the last 90 days</li>
+    </ul>
+
+
+
+    <!--
+    <h4 style="color: red;"><i>All per patient paperwork is kept in the Research Documentation Rack opposite Room 3 in Resus (near the blood fridge).</i></h4>
+    -->
+
+    <h4 style="padding-bottom:0px; margin-bottom:0px; ">If the patient is eligible:</h4>
+
+    <!-- reusable text element for general verbal consent element - remember to add the js call-->
+    <test-custom-el></test-custom-el>
+
+
+
+
+    <h1>Step by Step Guide to Recruitment:</h1>
+
+    <h4>In standard working hours; 9-5</h4>
+    <ol>
+        <li>Contact the BACHb Team via EPIC secure chat as soon as possible<br><br>AND<br></li>
+        <li>Please contact the ED Research Team when eligible patients arrive in ED:<br>
+            Send the ED Research Team a message via Epic chat "ED research Team" or phone 217907</li>
+    </ol>
+
+    <h4>Out of hours and weekends:</h4>
+
+    <ul><p>No recruitment out of hours.</p></ul>
+
+
+
+
+
+
+
+    <h1>Links for further information:</h1>
+
+
+    <a style="text-decoration:none;" href="https://bachbtrial.org.uk">Link to trial site: bachbtrial.org.uk</a>
+
+    <br>
+
+
+
+
+
+</div>
+
+
+<!-- script for reusable text elements -->
+<script src="js/reusabletext.js"></script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBnynr-TnZ3j1XPFanXPsp6yHMnKfyv_2A",
+    authDomain: "emerg-sci.firebaseapp.com",
+    projectId: "emerg-sci",
+    storageBucket: "emerg-sci.appspot.com",
+    messagingSenderId: "323941930988",
+    appId: "1:323941930988:web:d20fe9625921f8358952c9",
+    measurementId: "G-5TJQS2QVQ7"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+
+</script>
+
+
+</body>
+</html>
