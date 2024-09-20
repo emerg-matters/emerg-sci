@@ -11,8 +11,9 @@ Add comment to SWIFT
 Add apple specific icons
 Sort font in apple  - it's OK top 2 divs LHS and then bad on the middle and right.
 
-
-
+2024.09.20
+I;ve added noindex meta tag.
+I've submitted requests to the google search console to have emres and emerg-sci urls removed from google indexing
 
 
 
