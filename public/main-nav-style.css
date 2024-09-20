@@ -1,0 +1,438 @@
+
+nav {
+  background-color: #253568;
+
+
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+#ident img {
+         height:0.5rem;
+         vertical-align: middle;
+         margin:10px
+       }
+
+.logo img {
+  height:1.4rem;
+  font-size: 3.75em;
+  vertical-align: middle;
+  margin:10px
+}
+
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.IndexTitle{
+ font-size:40px;
+  color:#ffffff;
+    padding-left:0.4em;
+    padding-right: 0.4em;
+}
+
+.ChapterNumber04Large   {
+
+}
+
+
+
+@media (max-width: 480px) {
+     .navbar {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+     }
+
+     nav {
+       width: 100%;
+       padding-left: 0.3em;
+       padding-right: 10px;
+     }
+
+     #parent {display: table;}
+     #child {
+         display: table-cell;
+         vertical-align: middle;
+     }
+
+     .navContainer04 {
+       display: flex;
+       justify-content: space-between;
+       margin: 0;
+       padding-top: 0;
+       padding-bottom: 0;
+       overflow: hidden;
+       overflow: hidden;
+     }
+
+
+     .banner {
+       display: flex;
+       justify-content: space-between;
+     }
+
+     .ChapterNumber04Large {
+       font-family: "Roboto", sans-serif;
+       font-size: 48px;
+       padding: 0;
+       margin: 0;
+     }
+
+     .ChapterTitle {
+       font-family: "Roboto", sans-serif;
+       font-size: 16px;
+       padding-left: 12px;
+     }
+
+}
+
+
+@media (min-width: 481px) {
+
+.ChapterNumber04Large {
+  font-family: "Roboto", sans-serif;
+  font-size: 48px;
+  padding: 0;
+  margin: 0;
+}
+
+#parent {display: table;}
+#child {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.navContainer04 {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  overflow: hidden;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ChapterTitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  padding-left: 12px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 10px;
+}
+}
+
+
+@media (min-width: 769px) {
+.ChapterNumber04Large {
+  font-family: "Roboto", sans-serif;
+  font-size: 48px;
+  padding: 0;
+  margin: 0;
+}
+
+#parent {display: table;}
+#child {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.navContainer04 {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  overflow: hidden;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ChapterTitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  padding-left: 12px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 10px;
+}
+}
+
+@media (min-width: 1025px) {
+.ChapterNumber04Large {
+  font-family: "Roboto", sans-serif;
+  font-size: 48px;
+  padding: 0;
+  margin: 0;
+}
+
+#parent {display: table;}
+#child {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.navContainer04 {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  overflow: hidden;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ChapterTitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  padding-left: 12px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 10px;
+}
+
+
+/* Page title */
+
+
+
+table.titleTable {
+  width: 100%;
+  margin-bottom: 4%;
+}
+
+/* background-color is light color */
+
+
+.titleTableLeft {
+  font-size: 28px;
+  margin-left: -0.2em;
+  padding-left: 1em;
+  width: 4.5em;
+  vertical-align: top;
+}
+
+
+.titleTableRight {
+  font-size: 28px;
+  padding-right: 0.2em;
+  margin-bottom: 0.24em;
+  text-align: left;
+
+}
+
+
+}
+
+@media (min-width: 1201px) {
+.ChapterNumber04Large {
+  font-family: "Roboto", sans-serif;
+  font-size: 48px;
+  padding: 0;
+  margin: 0;
+}
+
+#parent {display: table;}
+#child {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.navContainer04 {
+
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  overflow: hidden;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ChapterTitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  padding-left: 12px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 10px;
+}
+
+
+/* Page title */
+
+
+
+table.titleTable {
+  width: 100%;
+  margin-bottom: 4%;
+}
+
+/* background-color is light color */
+
+
+.titleTableLeft {
+  font-size: 28px;
+  margin-left: -0.2em;
+  padding-left: 1em;
+  width: 4.5em;
+  vertical-align: top;
+}
+
+
+.titleTableRight {
+  font-size: 28px;
+  padding-right: 0.2em;
+  margin-bottom: 0.24em;
+  text-align: left;
+
+}
+
+
+}
+
+@media (min-width: 1701px) {
+
+.ChapterNumber04Large {
+  font-family: "Roboto", sans-serif;
+  font-size: 48px;
+  padding: 0;
+  margin: 0;
+}
+
+#parent {display: table;}
+#child {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.navContainer04 {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow: hidden;
+  overflow: hidden;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ChapterTitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  padding-left: 12px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  width: 100%;
+  padding-left: 30px;
+  padding-right: 10px;
+}
+
+
+/* Page title */
+
+
+
+table.titleTable {
+  width: 100%;
+  margin-bottom: 4%;
+}
+
+/* background-color is light color */
+
+
+.titleTableLeft {
+  font-size: 28px;
+  margin-left: -0.2em;
+  padding-left: 1em;
+  width: 4.5em;
+  vertical-align: top;
+}
+
+
+.titleTableRight {
+  font-size: 28px;
+  padding-right: 0.2em;
+  margin-bottom: 0.24em;
+  text-align: left;
+
+}
+
+
+}
+
+
+

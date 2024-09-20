@@ -5,6 +5,13 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "redirects": [
+      {
+        "source": "https://emerg-sci.web.app/**",
+        "destination": "https://emres.uk",
+        "type": 301
+      }
     ]
   }
 }
