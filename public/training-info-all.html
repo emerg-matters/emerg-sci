@@ -5,7 +5,7 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
 
-    <title>Emerg Sci: Study training</title>
+    <title>EMRes: Study training</title>
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 
     <link href="max-480px.css" media="(max-width: 480px)" rel="stylesheet">
@@ -27,8 +27,31 @@
 </head>
 <body>
 
+<div class="study-page-layout" style="max-width:900px; margin:auto;">
+    <!--
 <div style="background-color: #ffffff; padding: 5px">
+-->
 
+    <nav class="navbar" >   <!-- This nav bar is all set up so identity logo could go to left; and nav buttons to right.  -->
+        <div>
+            <div class="navContainer">
+                <!-- <div class="banner" id="parent"> <div class="ChapterTitle" id="child"></div> -->  <!-- /banner-->
+            </div>
+            <!-- /navContainer -->
+        </div>
+
+        <div class="nav-links" >
+
+            <a href="index.html" class="logo">
+                <img alt="Back Button" src="images/ident-images/EMRES-try-7-orange-gradient.png" alt="emres logo">
+
+                <a href="index.html" class="logo">
+                    <img alt="Home Page Button" src="images/nav_home_icon.png"> </a>
+            </a>
+            <!--   Search button; should the day come it's needed. <a href="searchPage.html" class="logo">   <img alt="Search Button" src=""> </a>   -->
+        </div>
+    </nav>
+    <br><br>
 
 
     <h1 id="trainingTitle">Training</h1>
@@ -571,69 +594,69 @@
     <br>
 
 
+    <!--
+        <div class="RedBox">
 
-    <div class="RedBox">
-
-        <img src="images/TAP-logo.jpg" alt="TAP trial logo"
-             style="max-height: 8vH">
-
-
-        <h5>Beriplex in trauma patients with major haemorrhage<br>
-            For improved survival</h5>
+            <img src="images/TAP-logo.jpg" alt="TAP trial logo"
+                 style="max-height: 8vH">
 
 
-        <p>In order to be authorised to enrol patients to the TAP study, you need only confirm you have read the slides linked below, and hold a current GCP certificate. Please email the ED Research Team at: cuh.edresearchteam@nhs.net to arrange to sign the delegation log </p>
+            <h5>Beriplex in trauma patients with major haemorrhage<br>
+                For improved survival</h5>
+
+
+            <p>In order to be authorised to enrol patients to the TAP study, you need only confirm you have read the slides linked below, and hold a current GCP certificate. Please email the ED Research Team at: cuh.edresearchteam@nhs.net to arrange to sign the delegation log </p>
 
 
 
-        <a style="text-decoration: none" href="resources/TAP_study_SIV_presentation_Physician_abbreviated_training_V2_11Apr2024_Final.pdf">
+            <a style="text-decoration: none" href="resources/TAP_study_SIV_presentation_Physician_abbreviated_training_V2_11Apr2024_Final.pdf">
 
-            <div style="display:flex; align-items:center; width: 90%; max-width: 600px; text-decoration: none; color: white; background-color: #f26363; padding: 10px; border-radius: 25px;" >
+                <div style="display:flex; align-items:center; width: 90%; max-width: 600px; text-decoration: none; color: white; background-color: #f26363; padding: 10px; border-radius: 25px;" >
 
-                <p style="text-decoration: none; margin-right: 10px; color: white; font-size: 1.2em;  ">Click here:</p>
-                <img src="images/TAP-slides-img.jpg" alt="Image of TAP slides"  style="max-height: 8vh; margin-left; 5px; ">
+                    <p style="text-decoration: none; margin-right: 10px; color: white; font-size: 1.2em;  ">Click here:</p>
+                    <img src="images/TAP-slides-img.jpg" alt="Image of TAP slides"  style="max-height: 8vh; margin-left; 5px; ">
 
-            </div>
-        </a>
+                </div>
+            </a>
+
+        </div>
+
+    -->
+
+
+
+
+
+
 
     </div>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyBnynr-TnZ3j1XPFanXPsp6yHMnKfyv_2A",
+          authDomain: "emerg-sci.firebaseapp.com",
+          projectId: "emerg-sci",
+          storageBucket: "emerg-sci.appspot.com",
+          messagingSenderId: "323941930988",
+          appId: "1:323941930988:web:d20fe9625921f8358952c9",
+          measurementId: "G-5TJQS2QVQ7"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
 
 
 
+    </script>
 
 
-
-
-
-
-</div>
-<script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyBnynr-TnZ3j1XPFanXPsp6yHMnKfyv_2A",
-      authDomain: "emerg-sci.firebaseapp.com",
-      projectId: "emerg-sci",
-      storageBucket: "emerg-sci.appspot.com",
-      messagingSenderId: "323941930988",
-      appId: "1:323941930988:web:d20fe9625921f8358952c9",
-      measurementId: "G-5TJQS2QVQ7"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-
-
-
-</script>
-
-
-</body>
-</html>
+    </body>
+    </html>
