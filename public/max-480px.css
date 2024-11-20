@@ -57,6 +57,11 @@ max-width:66%;
 padding-top: 0.2em; padding-bottom: 0.2em;
 background-color: white;
 }
+
+img.diagramImg {
+width:66%;
+padding-top: 1em; padding-bottom: 2em;
+}
   /* formatting the columns */
 
 .leftwardPanel {

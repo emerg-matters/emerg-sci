@@ -54,6 +54,10 @@ padding-top: 1em; padding-bottom: 1em; padding-left: 3%; padding-right: %m;
 background-color: white;
 }
 
+img.diagramImg {
+max-width:50%;
+padding-top: 1em; padding-bottom: 2em;
+}
 
     /* formatting the columns */
 
