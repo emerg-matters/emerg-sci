@@ -1,4 +1,4 @@
-const CACHE_NAME = 'site-cache-2025.01.08-v1';
+const CACHE_NAME = 'site-cache-2025.01.13-v1';
 const urlsToCache = [
   '/',
   '/index.html'
@@ -32,7 +32,7 @@ self.addEventListener('fetch', event => {
 });
 
 self.addEventListener('activate', event => {
-  const cacheWhitelist = ['site-cache-2025.01.08-v1'];
+  const cacheWhitelist = ['site-cache-2025.01.13-v1'];
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
