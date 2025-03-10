@@ -168,7 +168,35 @@
 
         <li>Ask delegated Dr to confirm eligibility and sign “Eligibility Check” form – this will also be documented in the Smartphrase.</li>
 
-        <li>Approach patient and give patient information sheet.</li>
+        <li>Approach patient and give patient information sheet, and link to the dexacell participant information video: <a href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsites.exeter.ac.uk%2Fdexacell%2Fparticipant-information%2F&data=05%7C02%7Ceoin.macdonald-nethercott%40nhs.net%7C125949ad6b854efa335f08dd45251d96%7C37c354b285b047f5b22207b48d774ee3%7C0%7C0%7C638742747891353375%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=FXxwYkiZlpN0mNnWcq883l6d6d0vIecNA%2BkJlrzC3y8%3D&reserved=0">Link to the video</a></li>
+
+        <Li style="margin-bottom: 0px; padding-bottom: 0px; ">Or, tap the button below to display a QR code link to the patient information leaflet: </Li>
+        <br>
+
+        <script>
+            function myQRCFunction() {
+          var x = document.getElementById("myDIV");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+        </script>
+
+
+        <button onclick="myQRCFunction()" class="button-1" style="background-color: green">QR code link</button>
+        <br>
+        <div id="myDIV" style="display:none">
+
+
+            <img style="width: 400px; max-width: 90%;"  src="images/dexacell-qrc-patient-info-video.png" alt="QR code link to patient information leaflet">
+        </div>
+
+<br>
+        <br>
+
+
 
         <li>Inform patients about follow-up text messages (texts will be sent at 8am and 8pm.)</li>
 
