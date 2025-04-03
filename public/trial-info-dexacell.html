@@ -25,6 +25,7 @@
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet"/>
+    <title></title>
 
 </head>
 <body style="background-color: #ffffff;">
@@ -53,9 +54,20 @@
 
 
 
+    <div>
+        <br>
+
+        <img src="images/dexacell-study-logo.jpg" alt="Dummy logo image" class="studyLogoImage"
+             style="padding-bottom: 0px; margin-bottom: 0px; ">
+
+        <h1  style="padding-top: 20px; margin-top: 0px; ">Investigating the effect of dexamethasone in cellulitis</h1><br>
+
+        <br>
+
+    </div>
 
 
-
+    <h1  style="padding-top: 20px; margin-top: 20px; ">Eligibility</h1>
 
 
     <h4>Local study conflicts</h4>
@@ -129,7 +141,7 @@
 
     <br>
     <br>
-    <br>
+    <h1  style="padding-top: 20px; margin-top: 20px; ">Step by Step Guide to Recruitment:</h1>
 
 
     <h4>In standard working hours; 9-5</h4>
@@ -142,32 +154,67 @@
 
    <ol>
 
+       <li>Complete screening log on REDCap.  Check diabetes status of pt.</li>
 
+       <li>Complete pregnancy test if female in appropriate age group (gain consent from the patient first).</li>
 
+       <li>Collect paperwork from the rack in the ambulance bay with or without the tablet.</li>
+       <img src="images/comited-amb_bay_rack.png"  class="locationImg" alt="image of rack in ambulance bay">
 
+       <li>The doctor on the delegation log needs to confirm eligibility and sign “Eligibility Check” form – this will also need to be documented in the Smartphrase.</li>
 
+       <li>Approach patient and provide them with the Patient Information Sheet to read.<br>(QR code links to both patient information sheet and video are at the foot of the page)</li>
 
        <li>Inform patients about follow-up text messages (texts will be sent at 8am and 8pm.)</li>
 
+       <li>Consent on REDCap or paper consent form.</li>
 
+       <li>Randomise using REDCap.</li>
 
+       <li>Ask Dr to prescribe the trial drug (Investigation Medicinal Product, IMP) as per EPIC build.</li>
 
+       <li>Collect the IMP from the drug cupboard.</li>
 
+       <li>Administer the 1st dose.</li>
 
+       <li>Complete the paperwork (handover sheet; questionnaire; Patient trial card)</li>
 
+       <li>Place ALL the documentation in the research post box – in reception, behind where our receptionists sit</li>
+       <img src="images/comited-reception_box_180k.jpg"  class="locationImg" alt="image of reception documents box" >
+
+       <li>Enter Smartphrase into EPIC to document, upload handover sheet to EPIC (via Haiku)</li>
+
+       <li>2nd dose to be administered 24hrs later.</li>
 
    </ol>
 
+
+
     <h1>Links for further information:</h1>
 
-    <p>(Delete this) PLease put here any available link to local info is to protocol, or source of info if clarification over a recruitment issue is needed</p>
-    <a style="text-decoration:none;" href="trials-recently-closed.html">Link to local training</a>
+    <p>Tap these buttons for QR code links to the patient information video and text sheets, The link for the study homepage is at the foot.</p>
 
-    <br>
-    <a style="text-decoration:none;" href="https://example.html">Link to any patient information leaflets or sites</a>
-    <br>
+    <script>
     function myQRCFunction() {
     var x = document.getElementById("myDIV");
+    if (x.style.display === "none") {
+    x.style.display = "block";
+    } else {
+    x.style.display = "none";
+    }
+    }
+
+         function myQRCFunction2() {
+    var x = document.getElementById("myDIV2");
+    if (x.style.display === "none") {
+    x.style.display = "block";
+    } else {
+    x.style.display = "none";
+    }
+    }
+
+         function myQRCFunction3() {
+    var x = document.getElementById("myDIV3");
     if (x.style.display === "none") {
     x.style.display = "block";
     } else {
@@ -177,18 +224,45 @@
 </script>
 
 
-    <button onclick="myQRCFunction()" class="button-1" style="background-color: blacK">QR code link</button>
+    <button onclick="myQRCFunction()" class="button-1" style="background-color: #30696e; width: 150px; ">Link to video</button>
 
     <div id="myDIV" style="display:none">
 
-        <img style="width: 400px; max-width: 90%;"  src="images/curly-patient-info-page-QRc.png.png" alt="QR code link to patient information leaflet">
+        <a target="_top" href="https://youtu.be/bNMIS_ozuu4"><img style="width: 400px; max-width: 90%;"  src="images/dexacell-qrc-patient-info-video.png" alt="QR code link to patient information leaflet">
+        </a>
+        <br>
+        <p>You can tap the QR code image to go to the patient information sheet page<br>Tap the button again to hide the QR code. </p>
+
     </div>
     <br>
-    <p>(Delete this) Please insert below here any text and links that should go into the training pages for the study;<br>
-    For example the docuemnts to read to be able to identify eligible patients; the docs to be read to be able to enroll patients</p>
-    <a style="text-decoration:none;" href="https://example.html">place these links here</a>
+    <br>
+
+    <button onclick="myQRCFunction2()" class="button-1" style="background-color: #30696e; width: 150px; " >Link to info sheet</button>
+
+    <div id="myDIV2" style="display:none">
+
+        <a target="_top" href="https://sites.exeter.ac.uk/dexacell/wp-content/uploads/sites/453/2025/02/DEXACELL-Participant-Information-Sheet-v3.0-07JAN2025-FOR-LOCALISING.pdf"><img style="width: 400px; max-width: 90%;"  src="images/dexacell-qrc-patient-info-video.png" alt="QR code link to patient information leaflet">
+        </a>
+        <br>
+        <p>You can tap the QR code image to go to the patient information sheet page<br>Tap the button again to hide the QR code. </p>
+
+    </div>
+    <br>
+    <br>
+    <button onclick="myQRCFunction3()" class="button-1" style="background-color: #30696e; width: 150px; " >Study website</button>
 
 
+    <div id="myDIV3" style="display:none">
+
+        <a target="_top" href="https://sites.exeter.ac.uk/dexacell/wp-content/uploads/sites/453/2025/02/DEXACELL-Participant-Information-Sheet-v3.0-07JAN2025-FOR-LOCALISING.pdf"><img style="width: 400px; max-width: 90%;"  src="images/dexacell-qrc-patient-info-video.png" alt="QR code link to patient information leaflet">
+        </a>
+        <br>
+        <p>You can tap the QR code image to go to the study homepage, which has all the links too.<br>Tap the button again to hide the QR code. </p>
+
+        <a href="https://sites.exeter.ac.uk/dexacell/participant-information/">https://sites.exeter.ac.uk/dexacell/participant-information/</a>
+    </div>
+    <br>
+    <br>
 
 
 </div>
