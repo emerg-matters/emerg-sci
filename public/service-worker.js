@@ -1,4 +1,4 @@
-const CACHE_NAME = 'site-cache-2025.01.13-v1';
+const CACHE_NAME = 'site-cache-2025.07.02-v1';
 const urlsToCache = [
   '/',
   '/index.html'
@@ -17,22 +17,29 @@ self.addEventListener('install', event => {
   );
 });
 
-// Fetch event
+// Fetch event - Network-First Strategy
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        if (response) {
-          return response;
+    fetch(event.request)
+      .then(networkResponse => {
+        // If successful, update cache for next time (optional)
+        if (networkResponse.ok && networkResponse.type === 'basic') {
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, networkResponse.clone());
+          });
         }
-        return fetch(event.request);
-      }
-    )
+        return networkResponse;
+      })
+      .catch(() => {
+        // Network failed, try to get from cache
+        return caches.match(event.request);
+      })
   );
 });
 
+
 self.addEventListener('activate', event => {
-  const cacheWhitelist = ['site-cache-2025.01.13-v1'];
+  const cacheWhitelist = ['site-cache-2025.07.02-v1'];
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(
