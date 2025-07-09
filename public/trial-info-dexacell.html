@@ -231,6 +231,58 @@
 </script>
 
 
+    <h1>Links for further information:</h1>
+
+    <p>Tap these buttons for QR code links to the patient information video and text sheets, The link for the study homepage is at the foot.</p>
+
+    <script>
+        function myQRCFunction() {
+        var x = document.getElementById("myDIV");
+        var y = document.getElementById("myDIV2");
+        var z = document.getElementById("myDIV3");
+
+        if (x.style.display === "none") {
+        x.style.display = "block";
+        y.style.display = "none";
+        z.style.display = "none";
+
+        } else {
+        x.style.display = "none";
+        }
+        }
+
+             function myQRCFunction2() {
+        var x = document.getElementById("myDIV");
+        var y = document.getElementById("myDIV2");
+        var z = document.getElementById("myDIV3");
+
+        if (y.style.display === "none") {
+        x.style.display = "none";
+        y.style.display = "block";
+        z.style.display = "none";
+
+        } else {
+        y.style.display = "none";
+        }
+        }
+
+             function myQRCFunction3() {
+        var x = document.getElementById("myDIV");
+        var y = document.getElementById("myDIV2");
+        var z = document.getElementById("myDIV3");
+
+        if (z.style.display === "none") {
+        x.style.display = "none";
+        y.style.display = "none";
+        z.style.display = "block";
+
+        } else {
+        z.style.display = "none";
+        }
+        }
+    </script>
+
+
     <button onclick="myQRCFunction()" class="button-1" style="background-color: #30696e; width: 150px; ">Link to video</button>
 
     <div id="myDIV" style="display:none">
@@ -238,7 +290,7 @@
         <a target="_top" href="https://youtu.be/bNMIS_ozuu4"><img style="width: 400px; max-width: 90%;"  src="images/dexacell-qrc-patient-info-video.png" alt="QR code link to patient information leaflet">
         </a>
         <br>
-        <p>You can tap the QR code image to go to the patient information sheet page<br>Tap the button again to hide the QR code. </p>
+        <p>You can tap the QR code image to open the patient video in your browser<br>Tap the link button again to hide the QR code. </p>
 
     </div>
     <br>
@@ -248,10 +300,10 @@
 
     <div id="myDIV2" style="display:none">
 
-        <a target="_top" href="https://sites.exeter.ac.uk/dexacell/wp-content/uploads/sites/453/2025/02/DEXACELL-Participant-Information-Sheet-v3.0-07JAN2025-FOR-LOCALISING.pdf"><img style="width: 400px; max-width: 90%;"  src="images/dexacell-qrc-patient-info-video.png" alt="QR code link to patient information leaflet">
+        <a target="_top" href="https://sites.exeter.ac.uk/dexacell/wp-content/uploads/sites/453/2025/02/DEXACELL-Participant-Information-Sheet-v3.0-07JAN2025-FOR-LOCALISING.pdf"><img style="width: 400px; max-width: 90%;"  src="images/dexacell-qr-code-to-PIS.png" alt="QR code link to patient information leaflet">
         </a>
         <br>
-        <p>You can tap the QR code image to go to the patient information sheet page<br>Tap the button again to hide the QR code. </p>
+        <p>You can tap the QR code image to go open the patient information sheet in your browser<br>Tap the link button again to hide the QR code. </p>
 
     </div>
     <br>
@@ -261,15 +313,14 @@
 
     <div id="myDIV3" style="display:none">
 
-        <a target="_top" href="https://sites.exeter.ac.uk/dexacell/wp-content/uploads/sites/453/2025/02/DEXACELL-Participant-Information-Sheet-v3.0-07JAN2025-FOR-LOCALISING.pdf"><img style="width: 400px; max-width: 90%;"  src="images/dexacell-qrc-patient-info-video.png" alt="QR code link to patient information leaflet">
+        <a target="_top" href="https://sites.exeter.ac.uk/dexacell/"><img style="width: 400px; max-width: 90%;"  src="images/dexacell-qrc-link-to-study-website.png" alt="QR code link to patient information leaflet">
         </a>
         <br>
-        <p>You can tap the QR code image to go to the study homepage, which has all the links too.<br>Tap the button again to hide the QR code. </p>
+        <p>You can tap the QR code image to open the study homepage in the browser, which has all the links above too.<br>Tap the link button again to hide the QR code. </p>
 
-        <a href="https://sites.exeter.ac.uk/dexacell/participant-information/">https://sites.exeter.ac.uk/dexacell/participant-information/</a>
+        <a target="_top" href="https://sites.exeter.ac.uk/dexacell/participant-information/">https://sites.exeter.ac.uk/dexacell/participant-information/</a>
     </div>
-    <br>
-    <br>
+    <br><br>
 
 
 </div>
