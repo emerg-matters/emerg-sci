@@ -1,7 +1,16 @@
 const CACHE_NAME = 'site-cache-2025.07.24-v1';
 const urlsToCache = [
   '/',
-  '/index.html'
+  '/index.html',
+  '/training-info-all.html',
+  '/trial-info-tbi.html',
+  '/trial-info-EVIS.html',
+  '/trial-info-udcd-trial-revised.html',
+  '/trial-info-curly.html',
+  '/trial-info-BACH-b.html',
+  '/trial-info-aspect.html',
+  '/trial-info-draft3.html'
+
 
 ];
 
