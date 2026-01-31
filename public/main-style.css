@@ -26,12 +26,63 @@ body {
 }
 
 
+/*  options pink fac1b3
+
+/* Highlight panel */
+/* Base styles for the highlight panel */
+    .highlight-panel {
+        background-color: #fdd393; /* Matches your 'Adult with mild head injury' card */
+        color: #253568; /* Dark blue text for contrast */
+        margin: 40px;
+        padding: 10px;
+        border-radius: 8px;
+        border: 2px solid white;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        padding-bottom: 20px;
+    }
+
+    .highlight-panel h3 {
+        margin-top: 0;
+        margin-bottom: 5px;
+        font-size: 1.1em;
+        text-transform: uppercase;
+        border-bottom: 1px solid #253568;
+    }
+
+    .highlight-panel p {
+        margin: 0;
+        font-weight: 600;
+        font-size: 0.95em;
+        line-height: 1.3em;
+        position: relative;
+        z-index: 2;
+    }
+
+    /* THE NEW BRAIN IMAGE STYLE */
+        .brain-corner-image {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 25%;   /* Max 25% width of the panel */
+            max-width: 60px; /* Cap width so it doesn't get huge on desktop */
+            height: auto;
+            opacity: 0.8; /* Slight transparency so it looks like a watermark */
+            z-index: 1;
+        }
+
+    /* MOBILE SPECIFIC: Enforce the 25% screen height limit */
+    @media (max-width: 480px) {
+        .highlight-panel {
+            max-height: 25vh; /* Limits height to 25% of the viewport */
+            overflow-y: auto; /* Adds a scrollbar if the text gets too long */
+            margin: 20px;      /* Reduces margin to save space */
+        }
+    }
+/* end  of highlight panel */
 
 
 
-
-
-/* fomratting homepage buttons */
+/* formatting homepage buttons */
 
 button:hover {
   background-color: green;
