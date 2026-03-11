@@ -38,7 +38,7 @@ body {
     .highlight-panel {
         background-color: #fdd393; /* Matches your 'Adult with mild head injury' card */
         color: #253568; /* Dark blue text for contrast */
-        margin: 40px;
+        margin: 20px;
         padding: 10px;
         border-radius: 8px;
         border: 2px solid white;
@@ -71,6 +71,8 @@ body {
     }
 /* end  of highlight panel */
 
+
+
 /* formatting left column buttons */
 
 /* Quick Navigation Buttons for Clinicians */
@@ -78,7 +80,8 @@ body {
     display: flex;
     justify-content: space-around;
     gap: 10px;
-    padding: 10px;
+    padding-top: 10px;
+    padding-left: 20px; padding-right: 20px;
     margin-top: 20px;
 }
 

@@ -9,9 +9,22 @@
     "redirects": [
       {
         "source": "https://emerg-sci.web.app/**",
-        "destination": "https://emres.uk",
+        "destination": "https://eureca-research.org",
         "type": 301
+      }
+    ],
+    "headers": [
+      {
+        "source": "/service-worker.js",
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-cache, no-store, must-revalidate"
+          }
+        ]
       }
     ]
   }
 }
+
+
