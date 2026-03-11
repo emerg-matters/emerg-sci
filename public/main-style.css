@@ -7,10 +7,15 @@ body {
   display: flex;
   justify-content: center;
   padding: 5px;
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.875em;
 
   }
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
 
 
 /* formatting for flexbox layouts  */
@@ -44,31 +49,18 @@ body {
     .highlight-panel h3 {
         margin-top: 0;
         margin-bottom: 5px;
-        font-size: 1.1em;
-        text-transform: uppercase;
+        font-size: 1.2em;
         border-bottom: 1px solid #253568;
     }
 
     .highlight-panel p {
         margin: 0;
-        font-weight: 600;
-        font-size: 0.95em;
         line-height: 1.3em;
         position: relative;
         z-index: 2;
     }
 
-    /* THE NEW BRAIN IMAGE STYLE */
-        .brain-corner-image {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            width: 25%;   /* Max 25% width of the panel */
-            max-width: 60px; /* Cap width so it doesn't get huge on desktop */
-            height: auto;
-            opacity: 0.8; /* Slight transparency so it looks like a watermark */
-            z-index: 1;
-        }
+
 
     /* MOBILE SPECIFIC: Enforce the 25% screen height limit */
     @media (max-width: 480px) {
@@ -148,9 +140,7 @@ img {
 
 
 
-h4 {
-font-size: 18px;
-}
+
 
 
 h5 {
@@ -185,17 +175,11 @@ h4 {
     padding-bottom:0.5px;
 }
 
-p {
-font-size: 16px;
-}
 
-li {
-font-size: 16px;
-}
 
-a {
-font-size: 16px;
-}
+
+
+
 
 /* css to move the training card to the bottom of the div  */
 #header {
@@ -237,9 +221,9 @@ font-size: 1.2em;
     color: #FFFFFF;
     cursor: pointer;
     display: inline-block;
-    font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "inter, sans-serif;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 200;
     height: 40px;
     line-height: 20px;
     list-style: none;

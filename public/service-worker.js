@@ -1,63 +1,41 @@
-const CACHE_NAME = 'site-cache-2025.07.24-v1';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/training-info-all.html',
-  '/trial-info-tbi.html',
-  '/trial-info-EVIS.html',
-  '/trial-info-udcd-trial-revised.html',
-  '/trial-info-curly.html',
-  '/trial-info-BACH-b.html',
-  '/trial-info-aspect.html',
-  '/trial-info-draft3.html'
 
 
-];
+const CACHE_NAME = 'site-cache-2026.03.11-v1';
+const criticalUrls = ['/', '/index.html'];
 
-//install event
+// Install event - pre-cache critical URLs only
 self.addEventListener('install', event => {
-  // Perform install steps
+  self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then(cache => cache.addAll(criticalUrls))
   );
 });
 
-// Fetch event - Network-First Strategy
+// Activate event - clear out any old caches
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    Promise.all([
+      self.clients.claim(),
+      caches.keys().then(cacheNames =>
+        Promise.all(
+          cacheNames.map(cacheName => {
+            if (cacheName !== CACHE_NAME) return caches.delete(cacheName);
+          })
+        )
+      )
+    ])
+  );
+});
+
+// Fetch event - network first, lazily cache everything visited
 self.addEventListener('fetch', event => {
   event.respondWith(
     fetch(event.request)
-      .then(networkResponse => {
-        // If successful, update cache for next time (optional)
-        if (networkResponse.ok && networkResponse.type === 'basic') {
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, networkResponse.clone());
-          });
-        }
-        return networkResponse;
+      .then(response => {
+        const copy = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+        return response;
       })
-      .catch(() => {
-        // Network failed, try to get from cache
-        return caches.match(event.request);
-      })
-  );
-});
-
-
-self.addEventListener('activate', event => {
-  const cacheWhitelist = ['site-cache-2025.07.24-v1'];
-  event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (!cacheWhitelist.includes(cacheName)) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+      .catch(() => caches.match(event.request))
   );
 });

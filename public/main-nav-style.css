@@ -1,4 +1,8 @@
 
+body {
+    font-family: 'Inter', sans-serif;
+}
+
 nav {
   background-color: #253568;
 
@@ -79,14 +83,14 @@ nav {
      }
 
      .ChapterNumber04Large {
-       font-family: "Roboto", sans-serif;
+       font-family: "inter", sans-serif;
        font-size: 48px;
        padding: 0;
        margin: 0;
      }
 
      .ChapterTitle {
-       font-family: "Roboto", sans-serif;
+       font-family: "Inter", sans-serif;
        font-size: 16px;
        padding-left: 12px;
      }
@@ -97,7 +101,7 @@ nav {
 @media (min-width: 481px) {
 
 .ChapterNumber04Large {
-  font-family: "Roboto", sans-serif;
+  font-family: "inter", sans-serif;
   font-size: 48px;
   padding: 0;
   margin: 0;
@@ -125,7 +129,7 @@ nav {
 }
 
 .ChapterTitle {
-  font-family: "Roboto", sans-serif;
+  font-family: "inter", sans-serif;
   font-size: 16px;
   padding-left: 12px;
 }
@@ -146,7 +150,7 @@ nav {
 
 @media (min-width: 769px) {
 .ChapterNumber04Large {
-  font-family: "Roboto", sans-serif;
+  font-family: "inter", sans-serif;
   font-size: 48px;
   padding: 0;
   margin: 0;
@@ -174,7 +178,7 @@ nav {
 }
 
 .ChapterTitle {
-  font-family: "Roboto", sans-serif;
+  font-family: "inter", sans-serif;
   font-size: 16px;
   padding-left: 12px;
 }
@@ -194,7 +198,7 @@ nav {
 
 @media (min-width: 1025px) {
 .ChapterNumber04Large {
-  font-family: "Roboto", sans-serif;
+  font-family: "inter", sans-serif;
   font-size: 48px;
   padding: 0;
   margin: 0;
@@ -222,7 +226,7 @@ nav {
 }
 
 .ChapterTitle {
-  font-family: "Roboto", sans-serif;
+  font-family: "inter", sans-serif;
   font-size: 16px;
   padding-left: 12px;
 }
@@ -274,7 +278,7 @@ table.titleTable {
 
 @media (min-width: 1201px) {
 .ChapterNumber04Large {
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 48px;
   padding: 0;
   margin: 0;
@@ -303,7 +307,7 @@ table.titleTable {
 }
 
 .ChapterTitle {
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   padding-left: 12px;
 }
@@ -356,7 +360,7 @@ table.titleTable {
 @media (min-width: 1701px) {
 
 .ChapterNumber04Large {
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 48px;
   padding: 0;
   margin: 0;
@@ -384,7 +388,7 @@ table.titleTable {
 }
 
 .ChapterTitle {
-  font-family: "Roboto", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 16px;
   padding-left: 12px;
 }
