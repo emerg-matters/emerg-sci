@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EuReCa – CUH ED Research Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ─────────────────────────────────────────────
+           RESET & TOKENS
+        ───────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+          --navy:    #0b1f3a;
+          --teal:    #0d7a7a;
+          --teal-lt: #10a8a8;
+          --amber:   #e8a020;
+          --fog:     #f2f5f8;
+          --white:   #ffffff;
+          --mid:     #5a6d82;
+          --border:  #d0dbe6;
+          --radius:  10px;
+        }
+
+        body {
+          font-family: 'DM Sans', sans-serif;
+          background: var(--fog);
+          color: var(--navy);
+          min-height: 100vh;
+          -webkit-text-size-adjust: 100%;
+        }
+
+        /* ─────────────────────────────────────────────
+           TOP BAR  — mobile first
+        ───────────────────────────────────────────── */
+        .topbar {
+          background: var(--navy);
+          padding: 0 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 76px;
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          border-bottom: 3px solid var(--teal);
+        }
+        .topbar-logo {
+          font-family: 'Syne', sans-serif;
+          font-size: 1.3rem;
+          font-weight: 800;
+          color: var(--white);
+          letter-spacing: -0.02em;
+          white-space: nowrap;
+        }
+        .topbar-logo span { color: var(--teal-lt); }
+
+        .topbar-nav { display: flex; gap: 0.1rem; }
+        .topbar-nav a {
+          color: #9ab4cc;
+          text-decoration: none;
+          font-size: 0.73rem;
+          font-weight: 600;
+          padding: 0.45rem 0.6rem;
+          border-radius: 6px;
+          transition: background 0.2s, color 0.2s;
+          letter-spacing: 0.05em;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+        .topbar-nav a:hover, .topbar-nav a:focus {
+          background: rgba(255,255,255,0.1);
+          color: var(--white);
+        }
+
+        /* ─────────────────────────────────────────────
+           HERO  — compact on mobile
+        ───────────────────────────────────────────── */
+        .hero {
+          background: linear-gradient(135deg, var(--navy) 0%, #12375e 60%, #0d5a6e 100%);
+          padding: 1.4rem 1rem 1.2rem;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+        .hero::before {
+          content: '';
+          position: absolute; inset: 0;
+          background: radial-gradient(ellipse 70% 120% at 50% 140%, rgba(13,122,122,0.35) 0%, transparent 70%);
+          pointer-events: none;
+        }
+        .hero-eyebrow {
+          font-size: 0.65rem;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--teal-lt);
+          margin-bottom: 0.35rem;
+        }
+        .hero h1 {
+          font-family: 'Syne', sans-serif;
+          font-size: 1.5rem;
+          font-weight: 800;
+          color: var(--white);
+          letter-spacing: -0.03em;
+          line-height: 1.1;
+          margin-bottom: 0.45rem;
+        }
+        .hero p {
+          color: #9ab4cc;
+          font-size: 0.86rem;
+          line-height: 1.55;
+        }
+
+        /* ─────────────────────────────────────────────
+           ALERT BAND
+        ───────────────────────────────────────────── */
+        .alert-band {
+          background: linear-gradient(90deg, #7a3a00, #c06010, #7a3a00);
+          padding: 0.5rem 1rem;
+          text-align: center;
+          font-size: 0.76rem;
+          font-weight: 500;
+          color: #ffe0b0;
+          line-height: 1.5;
+        }
+        .alert-band strong { color: #ffd080; font-weight: 700; }
+
+        /* ─────────────────────────────────────────────
+           PAGE GRID
+           DEFAULT (mobile): flex column, stacked
+           The patient-lookup card comes first in source
+           order so it's first on mobile — it's the
+           highest-frequency action in the ED.
+        ───────────────────────────────────────────── */
+        .page-grid {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          padding: 0.9rem 0.75rem 2rem;
+          max-width: 1300px;
+          margin: 0 auto;
+        }
+
+        .col-left   { display: flex; flex-direction: column; gap: 1rem; }
+        .col-centre { display: flex; flex-direction: column; gap: 1rem; }
+        .col-right  { display: flex; flex-direction: column; gap: 1rem; }
+
+        /* ─────────────────────────────────────────────
+           SHARED CARD
+        ───────────────────────────────────────────── */
+        .card {
+          background: var(--white);
+          border-radius: var(--radius);
+          border: 1px solid var(--border);
+          overflow: hidden;
+        }
+        .card-header {
+          background: var(--navy);
+          padding: 0.6rem 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        .card-header h2 {
+          font-family: 'Syne', sans-serif;
+          font-size: 0.7rem;
+          font-weight: 700;
+          color: var(--white);
+          text-transform: uppercase;
+          letter-spacing: 0.12em;
+        }
+        .card-header .dot {
+          width: 7px; height: 7px;
+          border-radius: 50%;
+          background: var(--teal-lt);
+          flex-shrink: 0;
+        }
+
+        /* ─────────────────────────────────────────────
+           LEFT COL — patient lookup
+        ───────────────────────────────────────────── */
+        .prompt-label {
+          font-size: 0.7rem;
+          font-weight: 600;
+          color: var(--mid);
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          padding: 0.7rem 1rem 0.35rem;
+        }
+        .study-list { list-style: none; }
+        .study-list li { border-bottom: 1px solid var(--border); }
+        .study-list li:last-child { border-bottom: none; }
+        .study-list a {
+          display: flex;
+          align-items: center;
+          gap: 0.55rem;
+          padding: 0.78rem 1rem;
+          min-height: 48px;          /* thumb target */
+          text-decoration: none;
+          color: var(--navy);
+          font-size: 0.86rem;
+          line-height: 1.35;
+          transition: background 0.15s;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .study-list a:hover, .study-list a:focus { background: #eef3f8; }
+
+        .badge {
+          display: inline-block;
+          background: var(--teal);
+          color: var(--white);
+          font-size: 0.61rem;
+          font-weight: 700;
+          padding: 3px 7px;
+          border-radius: 4px;
+          white-space: nowrap;
+          flex-shrink: 0;
+          letter-spacing: 0.04em;
+        }
+        .badge.new    { background: var(--amber); color: var(--navy); }
+        .badge.back   { background: #2e7d32; }
+        .badge.closed { background: #8a9ab0; }
+
+        .arrow { margin-left: auto; color: var(--border); font-size: 1rem; flex-shrink: 0; }
+
+        /* ─────────────────────────────────────────────
+           CENTRE COL — study cards
+           Mobile default: 2-column grid — cards never
+           become too narrow regardless of screen width.
+        ───────────────────────────────────────────── */
+        .study-grid {
+          padding: 0.75rem;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.6rem;
+        }
+        .study-card {
+          border: 1px solid var(--border);
+          border-radius: 8px;
+          overflow: hidden;
+          text-decoration: none;
+          color: var(--navy);
+          background: #fafdff;
+          display: flex;
+          flex-direction: column;
+          transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .study-card:hover, .study-card:focus {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 24px rgba(11,31,58,0.12);
+          border-color: var(--teal);
+        }
+        .study-card:active { transform: scale(0.98); }
+
+        .study-card-img {
+          height: 58px;
+          background: var(--navy);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+        }
+        .study-card-img img {
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: contain;
+          padding: 4px;
+        }
+        .study-card-body {
+          padding: 0.5rem 0.55rem;
+          flex: 1;
+        }
+        .study-card-body .tag {
+          font-size: 0.58rem;
+          font-weight: 600;
+          color: var(--mid);
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          margin-bottom: 0.12rem;
+        }
+        .study-card-body .condition {
+          font-size: 0.74rem;
+          font-weight: 500;
+          line-height: 1.4;
+          color: var(--navy);
+        }
+        .study-card-footer {
+          background: var(--fog);
+          padding: 0.28rem 0.55rem;
+          font-size: 0.63rem;
+          color: var(--teal);
+          font-weight: 600;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          border-top: 1px solid var(--border);
+        }
+
+        /* ─────────────────────────────────────────────
+           RIGHT COL — training + contact
+        ───────────────────────────────────────────── */
+        .training-link {
+          display: block;
+          text-decoration: none;
+          color: var(--navy);
+          padding: 0.88rem 1rem;
+          min-height: 48px;
+          border-bottom: 1px solid var(--border);
+          font-size: 0.84rem;
+          line-height: 1.5;
+          transition: background 0.15s;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .training-link:hover, .training-link:focus { background: #eef3f8; }
+        .training-link:last-child { border-bottom: none; }
+        .training-link strong {
+          display: block;
+          font-weight: 600;
+          margin-bottom: 0.2rem;
+          color: var(--teal);
+          font-size: 0.77rem;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+        }
+        .contact-body { padding: 1rem; }
+        .contact-body > p {
+          font-size: 0.82rem;
+          color: #3d5266;
+          line-height: 1.6;
+          margin-bottom: 0.75rem;
+        }
+        .contact-item {
+          display: flex;
+          align-items: center;
+          gap: 0.55rem;
+          font-size: 0.82rem;
+          color: var(--navy);
+          margin-bottom: 0.5rem;
+          min-height: 44px;
+        }
+        .contact-item .ico {
+          width: 28px; height: 28px;
+          background: var(--fog);
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.78rem;
+          flex-shrink: 0;
+        }
+        .team-chips {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.35rem;
+          margin-top: 0.7rem;
+          padding-top: 0.7rem;
+          border-top: 1px solid var(--border);
+        }
+        .team-chip {
+          background: var(--fog);
+          border: 1px solid var(--border);
+          border-radius: 20px;
+          padding: 0.25rem 0.7rem;
+          font-size: 0.78rem;
+          font-weight: 500;
+          color: var(--navy);
+        }
+
+        /* ─────────────────────────────────────────────
+           FOOTER
+        ───────────────────────────────────────────── */
+        footer {
+          text-align: center;
+          padding: 1.2rem 1rem;
+          font-size: 0.72rem;
+          color: var(--mid);
+          border-top: 1px solid var(--border);
+          background: var(--white);
+        }
+
+        /* ─────────────────────────────────────────────
+           ANIMATIONS
+        ───────────────────────────────────────────── */
+        @keyframes fade-up {
+          from { opacity: 0; transform: translateY(6px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .study-card { animation: fade-up 0.35s ease both; }
+        .study-card:nth-child(1)  { animation-delay: 0.04s; }
+        .study-card:nth-child(2)  { animation-delay: 0.08s; }
+        .study-card:nth-child(3)  { animation-delay: 0.12s; }
+        .study-card:nth-child(4)  { animation-delay: 0.16s; }
+        .study-card:nth-child(5)  { animation-delay: 0.20s; }
+        .study-card:nth-child(6)  { animation-delay: 0.24s; }
+        .study-card:nth-child(7)  { animation-delay: 0.28s; }
+        .study-card:nth-child(8)  { animation-delay: 0.32s; }
+        .study-card:nth-child(9)  { animation-delay: 0.36s; }
+        .study-card:nth-child(10) { animation-delay: 0.40s; }
+
+        @media (prefers-reduced-motion: reduce) {
+          .study-card { animation: none; }
+          .study-card:hover { transform: none; }
+        }
+
+        /* ═══════════════════════════════════════════
+           BREAKPOINT: ≥ 640px  (larger phones / tablets)
+           Study grid → 3 columns.
+           Right col cards sit side-by-side.
+        ═══════════════════════════════════════════ */
+        @media (min-width: 640px) {
+          .topbar { height: 76px; padding: 0 1.5rem; }
+          .topbar-logo { font-size: 1.4rem; }
+          .topbar-nav a { font-size: 0.78rem; padding: 0.45rem 0.8rem; }
+
+          .hero { padding: 1.9rem 1.5rem 1.65rem; }
+          .hero h1 { font-size: 1.85rem; }
+          .hero p  { font-size: 0.9rem; max-width: 460px; margin: 0 auto; }
+
+          /* 3 cols in the study grid — comfortable from here up */
+          .study-grid { grid-template-columns: repeat(3, 1fr); gap: 0.7rem; }
+          .study-card-img { height: 66px; }
+
+          /* Training + contact row on mid-sized screens */
+          .col-right { flex-direction: row; }
+          .col-right .card { flex: 1; }
+        }
+
+        /* ═══════════════════════════════════════════
+           BREAKPOINT: ≥ 1080px  (desktop / wide tablet)
+           Full three-column page layout.
+        ═══════════════════════════════════════════ */
+        @media (min-width: 1080px) {
+          .topbar { height: 76px; padding: 0 2rem; }
+          .topbar-logo { font-size: 1.5rem; }
+          .topbar-nav a { font-size: 0.85rem; padding: 0.45rem 0.9rem; }
+
+          .hero { padding: 2.5rem 2rem 2rem; }
+          .hero h1 { font-size: clamp(1.9rem, 2.5vw, 2.4rem); }
+          .hero p  { font-size: 0.95rem; max-width: 560px; }
+
+          .page-grid {
+            display: grid;
+            grid-template-columns: 1fr 2.2fr 1fr;
+            gap: 1.25rem;
+            padding: 1.5rem 1.5rem 2.5rem;
+          }
+
+          /* Right column back to vertical stack in its own grid cell */
+          .col-right { flex-direction: column; }
+          .col-right .card { flex: unset; }
+
+          .study-grid { gap: 0.75rem; }
+          .study-card-img { height: 72px; }
+          .study-card-body .condition { font-size: 0.77rem; }
+          .study-card-body .tag       { font-size: 0.62rem; }
+          .study-card-footer           { font-size: 0.65rem; padding: 0.3rem 0.6rem; }
+
+          .study-list a { padding: 0.65rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR      <div class="topbar-logo">EuRe<span>Ca</span></div>-->
+<header class="topbar">
+    <div class="topbar-img" ><img style="height: 60px; margin-top:10px;
+" src="images/ident-images/eureca-basic-long-monserrat-cambridge-margins-dark.png" alt="dfsjn;gijn"></div>
+    <nav class="topbar-nav">
+        <a href="#">FAQ</a>
+        <a href="#">Blog</a>
+        <a href="#">Training</a>
+    </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <p class="hero-eyebrow">CUH Emergency Department</p>
+    <h1>Research Reference Hub</h1>
+    <p>Access study criteria, step-by-step enrolment guides, and training materials for active ED trials.</p>
+</section>
+
+<!-- ALERT BAND -->
+<div class="alert-band">
+    <strong>🔔 New:</strong> Three brain injury studies now open — POCKET, BRAINS-TBI &amp; TBI-Reporter &nbsp;·&nbsp; <strong>CONSEPT is back!</strong>
+</div>
+
+<!-- THREE COLUMN GRID -->
+<main class="page-grid">
+
+    <!-- ── LEFT COLUMN — patient lookup (first on mobile) ── -->
+    <div class="col-left">
+        <div class="card">
+            <div class="card-header"><span class="dot"></span><h2>I have a patient with…</h2></div>
+            <p class="prompt-label">Jump to study</p>
+            <ul class="study-list">
+                <li><a href="https://example.com"><span class="badge new">NEW</span> Adult · mild head injury <span class="arrow">›</span></a></li>
+                <li><a href="#"><span class="badge new">NEW</span> ≥16 yr · mild head injury <span class="arrow">›</span></a></li>
+                <li><a href="#"><span class="badge new">NEW</span> Adult · symptomatic head injury <span class="arrow">›</span></a></li>
+                <li><a href="#"><span class="badge back">BACK</span> Adult · spontaneous pneumothorax <span class="arrow">›</span></a></li>
+                <li><a href="#"><span class="badge">Active</span> Adult · sepsis &amp; low BP <span class="arrow">›</span></a></li>
+                <li><a href="#"><span class="badge">Active</span> Adult ≥50 · pneumonia <span class="arrow">›</span></a></li>
+                <li><a href="#"><span class="badge">Active</span> OHCA <span class="arrow">›</span></a></li>
+                <li><a href="#"><span class="badge">Active</span> Child · suspected UTI <span class="arrow">›</span></a></li>
+                <li><a href="#"><span class="badge">Active</span> &lt;12m · bronchiolitis <span class="arrow">›</span></a></li>
+                <li><a href="#" style="color:var(--mid)"><span class="badge closed">Closed</span> Recently closed studies <span class="arrow">›</span></a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ── CENTRE COLUMN — study cards ── -->
+    <div class="col-centre">
+        <div class="card">
+            <div class="card-header"><span class="dot"></span><h2>Active Studies</h2></div>
+            <div class="study-grid">
+
+                <a class="study-card" href="https://example.com">
+                    <div class="study-card-img" style="background:#102a4a">
+                        <img src="https://eureca-research.org/images/POCKET.png" alt="POCKET">
+                    </div>
+                    <div class="study-card-body">
+                        <div class="tag">Head Injury</div>
+                        <div class="condition">Adult with mild head injury</div>
+                    </div>
+                    <div class="study-card-footer">POCKET →</div>
+                </a>
+
+                <a class="study-card" href="#">
+                    <div class="study-card-img" style="background:#102a4a">
+                        <img src="https://eureca-research.org/images/BRAINS-TBI.png" alt="BRAINS-TBI">
+                    </div>
+                    <div class="study-card-body">
+                        <div class="tag">Head Injury</div>
+                        <div class="condition">≥16 yr with mild head injury</div>
+                    </div>
+                    <div class="study-card-footer">BRAINS-TBI →</div>
+                </a>
+
+                <a class="study-card" href="#">
+                    <div class="study-card-img" style="background:#102a4a">
+                        <img src="https://eureca-research.org/images/3P.png" alt="TBI Reporter">
+                    </div>
+                    <div class="study-card-body">
+                        <div class="tag">Head Injury</div>
+                        <div class="condition">Adult with symptomatic head injury</div>
+                    </div>
+                    <div class="study-card-footer">TBI Reporter →</div>
+                </a>
+
+                <a class="study-card" href="#">
+                    <div class="study-card-img" style="background:#102a4a">
+                        <img src="https://eureca-research.org/images/CONSEPT_full-banner.jpg" alt="CONSEPT">
+                    </div>
+                    <div class="study-card-body">
+                        <div class="tag">Pneumothorax</div>
+                        <div class="condition">Adult with spontaneous pneumothorax</div>
+                    </div>
+                    <div class="study-card-footer">CONSEPT →</div>
+                </a>
+
+                <a class="study-card" href="#">
+                    <div class="study-card-img" style="background:#102a4a">
+                        <img src="https://eureca-research.org/images/EVIS.jpg" alt="EVIS">
+                    </div>
+                    <div class="study-card-body">
+                        <div class="tag">Sepsis</div>
+                        <div class="condition">Adult with likely sepsis &amp; low BP</div>
+                    </div>
+                    <div class="study-card-footer">EVIS →</div>
+                </a>
+
+                <a class="study-card" href="#">
+                    <div class="study-card-img" style="background:#102a4a">
+                        <img src="https://eureca-research.org/images/ASPECT-thumb-cropped.jpg" alt="ASPECT">
+                    </div>
+                    <div class="study-card-body">
+                        <div class="tag">Pneumonia</div>
+                        <div class="condition">Adult ≥50 years with pneumonia</div>
+                    </div>
+                    <div class="study-card-footer">ASPECT →</div>
+                </a>
+
+                <a class="study-card" href="#">
+                    <div class="study-card-img" style="background:#102a4a">
+                        <img src="https://eureca-research.org/images/uDCD_logo_02Jul24-compressed.jpg" alt="uDCD">
+                    </div>
+                    <div class="study-card-body">
+                        <div class="tag">Cardiac Arrest</div>
+                        <div class="condition">Out of Hospital Cardiac Arrest</div>
+                    </div>
+                    <div class="study-card-footer">uDCD →</div>
+                </a>
+
+                <a class="study-card" href="#">
+                    <div class="study-card-img" style="background:#102a4a">
+                        <img src="https://eureca-research.org/images/Curly-trial-logo.jpg" alt="Curly">
+                    </div>
+                    <div class="study-card-body">
+                        <div class="tag">Paediatric</div>
+                        <div class="condition">Child with suspected UTI</div>
+                    </div>
+                    <div class="study-card-footer">Curly →</div>
+                </a>
+
+                <a class="study-card" href="#">
+                    <div class="study-card-img" style="background:#102a4a">
+                        <img src="https://eureca-research.org/images/BACH-b-trial-logo.jpg" alt="BACH-b">
+                    </div>
+                    <div class="study-card-body">
+                        <div class="tag">Paediatric</div>
+                        <div class="condition">Bronchiolitis under 12 months</div>
+                    </div>
+                    <div class="study-card-footer">BACH-b →</div>
+                </a>
+
+                <a class="study-card" href="#" style="border-color:#c0ccd8;opacity:0.7">
+                    <div class="study-card-img" style="background:#2e3f50">
+                        <img src="https://eureca-research.org/images/emerg-sci-ident-96.png" alt="Closed studies">
+                    </div>
+                    <div class="study-card-body">
+                        <div class="tag" style="color:#8a9ab0">Closed</div>
+                        <div class="condition" style="color:#5a6d82">Recently closed studies</div>
+                    </div>
+                    <div class="study-card-footer" style="color:#8a9ab0">View archive →</div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ── RIGHT COLUMN — training + contact ── -->
+    <div class="col-right">
+
+        <div class="card">
+            <div class="card-header"><span class="dot"></span><h2>Get Involved</h2></div>
+            <a class="training-link" href="#">
+                <strong>Enrolment Training</strong>
+                GCP Certification, EVIS, uDCD, Curly, ASPECT &amp; DRAFT3 study-specific guides
+            </a>
+            <a class="training-link" href="#">
+                <strong>API Scheme</strong>
+                Associate Principal Investigator programme + research CV template
+            </a>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><span class="dot"></span><h2>Contact the Team</h2></div>
+            <div class="contact-body">
+                <p>The EURECA team work Mon–Fri, 09:00–17:00.</p>
+                <div class="contact-item">
+                    <span class="ico">💬</span>
+                    <span>Epic chat: <strong>ED Research Team</strong></span>
+                </div>
+                <div class="contact-item">
+                    <span class="ico">📞</span>
+                    <span>Tel: <strong>217907</strong></span>
+                </div>
+                <div class="contact-item">
+                    <span class="ico">✉</span>
+                    <span>cuh.edresearchteam<wbr>@nhs.net</span>
+                </div>
+                <div class="team-chips">
+                    <span class="team-chip">Kerry</span>
+                    <span class="team-chip">Emma</span>
+                    <span class="team-chip">Jewel</span>
+                    <span class="team-chip">Tom (admin)</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    © EuReCa · CUH Emergency Department Research · Cambridge University Hospitals NHS Foundation Trust
+</footer>
+
+</body>
+</html>
