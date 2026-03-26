@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EuReCa – EVIS Trial</title>
+
+    <meta http-equiv="content-type" content="No-Store">
+    <meta name="robots" content="noindex">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@200;300&display=swap" rel="stylesheet">
+
+    <style>
+        /* ─────────────────────────────────────────────
+           RESET & TOKENS
+        ───────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+          --navy:    #0b1f3a;
+          --fog:     #f2f5f8;
+          --white:   #ffffff;
+          --mid:     #5a6d82;
+          --border:  #d0dbe6;
+          --radius:  10px;
+
+          /* ── Accent: warm amber / burnt-sienna ── */
+          --accent:      #b85c00;
+          --accent-lt:   #e07820;
+          --accent-dim:  rgba(184,92,0,0.18);
+
+          --hero-mid:    #1c2e42;
+          --hero-end:    #2b1a08;
+        }
+
+        body {
+          font-family: 'DM Sans', sans-serif;
+          background: var(--fog);
+          color: var(--navy);
+          min-height: 100vh;
+          -webkit-text-size-adjust: 100%;
+        }
+
+        /* ─────────────────────────────────────────────
+           TOP BAR
+        ───────────────────────────────────────────── */
+        .topbar {
+          background: var(--navy);
+          padding: 0 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 64px;
+          position: sticky;
+          top: 0;
+          z-index: 200;
+          border-bottom: 3px solid var(--accent);
+        }
+        .topbar-img img {
+          display: block;
+          height: 40px;
+          width: auto;
+          max-width: 220px;
+          object-fit: contain;
+        }
+
+        .hamburger {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 28px;
+          height: 20px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          flex-shrink: 0;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .hamburger span {
+          display: block;
+          width: 100%;
+          height: 2px;
+          background: #9ab4cc;
+          border-radius: 2px;
+          transition: transform 0.25s, opacity 0.25s, background 0.2s;
+          transform-origin: center;
+        }
+        .hamburger:hover span, .hamburger:focus span { background: var(--white); }
+        .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+        .topbar-nav { display: none; }
+
+        .mobile-menu {
+          display: none;
+          flex-direction: column;
+          background: #0e2845;
+          border-bottom: 3px solid var(--accent);
+          position: sticky;
+          top: 64px;
+          z-index: 190;
+        }
+        .mobile-menu.is-open { display: flex; }
+        .mobile-menu a {
+          color: #9ab4cc;
+          text-decoration: none;
+          font-size: 0.9rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          padding: 1rem 1.25rem;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+          transition: background 0.15s, color 0.15s;
+          min-height: 52px;
+          display: flex;
+          align-items: center;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu a:hover, .mobile-menu a:focus { background: rgba(255,255,255,0.06); color: var(--white); }
+
+        /* ─────────────────────────────────────────────
+           HERO
+        ───────────────────────────────────────────── */
+        .hero {
+          background: linear-gradient(135deg, var(--navy) 0%, var(--hero-mid) 50%, var(--hero-end) 100%);
+          padding: 1.6rem 1rem 1.4rem;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+        .hero::before {
+          content: '';
+          position: absolute; inset: 0;
+          background: radial-gradient(ellipse 70% 120% at 50% 140%, rgba(184,92,0,0.28) 0%, transparent 70%);
+          pointer-events: none;
+        }
+        .hero-inner {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.65rem;
+        }
+        .hero-logo-wrap {
+          width: 72px;
+          height: 72px;
+          background: var(--white);
+          border-radius: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 6px;
+          box-shadow: 0 4px 18px rgba(0,0,0,0.28);
+          flex-shrink: 0;
+        }
+        .hero-logo-wrap img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          border-radius: 8px;
+        }
+        .hero-eyebrow {
+          font-size: 0.65rem;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--accent-lt);
+        }
+        .hero h1 {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 1.5rem;
+          font-weight: 300;
+          color: var(--white);
+          letter-spacing: -0.03em;
+          line-height: 1.1;
+        }
+        .hero-subtitle {
+          color: #9ab4cc;
+          font-size: 0.82rem;
+          line-height: 1.55;
+          max-width: 420px;
+        }
+        .hero-tag-row {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 0.4rem;
+          margin-top: 0.2rem;
+        }
+        .hero-tag {
+          display: inline-flex;
+          align-items: center;
+          background: rgba(255,255,255,0.09);
+          border: 1px solid rgba(255,255,255,0.15);
+          border-radius: 20px;
+          padding: 0.2rem 0.7rem;
+          font-size: 0.7rem;
+          font-weight: 500;
+          color: #c8d8e8;
+          letter-spacing: 0.03em;
+        }
+
+        /* ─────────────────────────────────────────────
+           BACK BUTTON + BREADCRUMB ROW
+        ───────────────────────────────────────────── */
+        .nav-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.6rem 0.75rem;
+          max-width: 900px;
+          margin: 0 auto;
+          width: 100%;
+        }
+        .back-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          background: var(--white);
+          border: 1px solid var(--border);
+          border-radius: 7px;
+          padding: 0.35rem 0.85rem 0.35rem 0.65rem;
+          font-size: 0.78rem;
+          font-weight: 600;
+          color: var(--navy);
+          text-decoration: none;
+          transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
+          -webkit-tap-highlight-color: transparent;
+          cursor: pointer;
+          line-height: 1;
+        }
+        .back-btn:hover {
+          background: var(--fog);
+          border-color: var(--accent);
+          color: var(--accent);
+          transform: translateX(-2px);
+        }
+        .back-btn svg { flex-shrink: 0; }
+
+        .breadcrumb {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          font-size: 0.75rem;
+          color: var(--mid);
+        }
+        .breadcrumb a {
+          color: var(--accent);
+          text-decoration: none;
+          font-weight: 500;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb-sep { color: var(--border); }
+
+        /* ─────────────────────────────────────────────
+           PAGE WRAPPER
+        ───────────────────────────────────────────── */
+        .page-wrap {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 0.75rem 3rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        /* ─────────────────────────────────────────────
+           SHARED CARD
+        ───────────────────────────────────────────── */
+        .card {
+          background: var(--white);
+          border-radius: var(--radius);
+          border: 1px solid var(--border);
+          overflow: hidden;
+          animation: fade-up 0.35s ease both;
+        }
+        .card:nth-child(1) { animation-delay: 0.04s; }
+        .card:nth-child(2) { animation-delay: 0.10s; }
+        .card:nth-child(3) { animation-delay: 0.16s; }
+        .card:nth-child(4) { animation-delay: 0.22s; }
+        .card:nth-child(5) { animation-delay: 0.28s; }
+        .card:nth-child(6) { animation-delay: 0.34s; }
+        .card:nth-child(7) { animation-delay: 0.40s; }
+
+        .card-header {
+          background: var(--navy);
+          padding: 0.6rem 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        .card-header h2 {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.7rem;
+          font-weight: 300;
+          color: var(--white);
+          text-transform: uppercase;
+          letter-spacing: 0.12em;
+        }
+        .dot         { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-lt); flex-shrink: 0; }
+        .dot-green   { width: 7px; height: 7px; border-radius: 50%; background: #39FF14;          flex-shrink: 0; }
+        .dot-red     { width: 7px; height: 7px; border-radius: 50%; background: #e05050;          flex-shrink: 0; }
+        .dot-orange  { width: 7px; height: 7px; border-radius: 50%; background: #FF5C00;          flex-shrink: 0; }
+        .dot-blue    { width: 7px; height: 7px; border-radius: 50%; background: #c0fc0f;          flex-shrink: 0; }
+
+        .card-body {
+          padding: 1rem 1.1rem;
+          font-size: 0.87rem;
+          color: #3d5266;
+          line-height: 1.65;
+        }
+        .card-body p + p { margin-top: 0.55rem; }
+        .card-body strong { color: var(--navy); font-weight: 600; }
+
+        /* ─────────────────────────────────────────────
+           CRITERIA LISTS
+        ───────────────────────────────────────────── */
+        .criteria-list {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 0.45rem;
+        }
+        .criteria-list li {
+          display: flex;
+          gap: 0.65rem;
+          align-items: flex-start;
+          font-size: 0.85rem;
+          color: #3d5266;
+          line-height: 1.55;
+        }
+        .criteria-list li::before {
+          content: '';
+          width: 7px; height: 7px;
+          border-radius: 50%;
+          flex-shrink: 0;
+          margin-top: 6px;
+        }
+        .criteria-list.include li::before { background: #40b070; }
+        .criteria-list.exclude li::before { background: #e05050; }
+
+        .criteria-note {
+          margin-top: 0.75rem;
+          padding: 0.65rem 0.85rem;
+          background: #fef3e6;
+          border-left: 3px solid var(--accent);
+          border-radius: 0 6px 6px 0;
+          font-size: 0.8rem;
+          color: #5a3800;
+          line-height: 1.55;
+        }
+
+        /* ─────────────────────────────────────────────
+           RECRUITMENT STEPS
+        ───────────────────────────────────────────── */
+        .step-group { display: flex; flex-direction: column; gap: 0.75rem; }
+        .step-group + .step-group { margin-top: 1rem; }
+
+        .step-group-label {
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: var(--mid);
+          margin-bottom: 0.1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        .step-group-label::after {
+          content: '';
+          flex: 1;
+          height: 1px;
+          background: var(--border);
+        }
+        .step-item {
+          display: flex;
+          gap: 0.75rem;
+          align-items: flex-start;
+          font-size: 0.85rem;
+          color: #3d5266;
+          line-height: 1.55;
+        }
+        .step-num {
+          width: 24px; height: 24px;
+          border-radius: 50%;
+          background: var(--accent);
+          color: var(--white);
+          font-size: 0.65rem;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          margin-top: 1px;
+        }
+        .step-num.alt { background: #2a6090; }
+
+        /* ─────────────────────────────────────────────
+           LOCATION IMAGES
+        ───────────────────────────────────────────── */
+        .location-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.6rem;
+        }
+        .location-grid img {
+          flex: 1;
+          min-width: 120px;
+          max-width: 220px;
+          height: 120px;
+          object-fit: cover;
+          border-radius: 7px;
+          border: 1px solid var(--border);
+        }
+
+        /* ─────────────────────────────────────────────
+           LINK BUTTONS
+        ───────────────────────────────────────────── */
+        .links-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.6rem;
+        }
+        .link-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+          padding: 0.55rem 1rem;
+          border-radius: 7px;
+          background: var(--accent);
+          color: var(--white);
+          font-size: 0.83rem;
+          font-weight: 500;
+          text-decoration: none;
+          transition: opacity 0.15s, transform 0.15s;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .link-btn:hover { opacity: 0.88; transform: translateX(2px); }
+        .link-btn-ghost {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+          padding: 0.55rem 1rem;
+          border-radius: 7px;
+          background: var(--fog);
+          border: 1px solid var(--border);
+          color: var(--navy);
+          font-size: 0.83rem;
+          font-weight: 500;
+          text-decoration: none;
+          transition: border-color 0.15s, color 0.15s;
+        }
+        .link-btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* ─────────────────────────────────────────────
+           FOOTER
+        ───────────────────────────────────────────── */
+        footer {
+          text-align: center;
+          padding: 1.2rem 1rem;
+          font-size: 0.72rem;
+          color: var(--mid);
+          border-top: 1px solid var(--border);
+          background: var(--white);
+        }
+
+        /* ─────────────────────────────────────────────
+           ANIMATIONS
+        ───────────────────────────────────────────── */
+        @keyframes fade-up {
+          from { opacity: 0; transform: translateY(6px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        @media (prefers-reduced-motion: reduce) { .card { animation: none; } }
+
+        /* ─────────────────────────────────────────────
+           ≥ 640px
+        ───────────────────────────────────────────── */
+        @media (min-width: 640px) {
+          .topbar { height: 76px; padding: 0 1.5rem; }
+          .topbar-img img { height: 56px; max-width: 300px; }
+          .hamburger   { display: none; }
+          .mobile-menu { display: none !important; }
+          .topbar-nav  { display: flex; gap: 0.1rem; }
+          .topbar-nav a {
+            color: #9ab4cc;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.45rem 0.8rem;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            white-space: nowrap;
+          }
+          .topbar-nav a:hover, .topbar-nav a:focus { background: rgba(255,255,255,0.1); color: var(--white); }
+          .topbar-nav a.active { background: var(--accent-dim); color: var(--accent-lt); }
+
+          .hero { padding: 2rem 1.5rem 1.75rem; }
+          .hero-logo-wrap { width: 84px; height: 84px; }
+          .hero h1 { font-size: 1.85rem; }
+          .hero-subtitle { font-size: 0.87rem; }
+        }
+
+        @media (min-width: 1080px) {
+          .topbar { height: 76px; padding: 0 2rem; }
+          .topbar-img img { height: 60px; max-width: 340px; }
+          .topbar-nav a { font-size: 0.85rem; padding: 0.45rem 0.9rem; }
+          .hero { padding: 2.5rem 2rem 2rem; }
+          .hero h1 { font-size: clamp(1.9rem, 2.5vw, 2.4rem); }
+        }
+    </style>
+</head>
+<body>
+
+<!--
+TO DO:
+Change the tab title line 4.
+Change the hero text and image line 571-575
+Change the plain english study aim line 594
+Add inclusion criteria line 606, exclusion criteria below and study conflicts.
+Add study website 709
+If needed there is a card below for images.
+
+
+
+-->
+
+
+
+
+
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="topbar-img">
+        <a href="index.html">
+            <img src="images/ident-images/eureca-basic-long-monserrat-cambridge-margins-dark.png" alt="EuReCa">
+        </a>
+    </div>
+
+    <button class="hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+    </button>
+
+    <nav class="topbar-nav" aria-label="Main navigation">
+        <a href="temp-placeholder.html">FAQ</a>
+        <a href="temp-placeholder.html">Blog</a>
+        <a href="index.html">Home</a>
+    </nav>
+</header>
+
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+    <a href="temp-placeholder.html">FAQ</a>
+    <a href="temp-placeholder.html">Blog</a>
+    <a href="index.html">Home</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-logo-wrap">
+            <img src="images/EVIS.jpg" alt="EVIS trial logo">  <!--  <<-  *** TITLE IMAGE *** -->
+        </div>
+
+        <h1>TITLE</h1>
+        <p class="hero-subtitle">Early Vasopressors in Sepsis</p>
+        <div class="hero-tag-row">
+            <span class="hero-tag">Age &#8805; 18 years</span>
+            <span class="hero-tag">Sepsis</span>
+            <span class="hero-tag">Vasopressors</span>
+        </div>
+    </div>
+</section>
+
+<br>
+
+
+
+<!-- MAIN CONTENT -->
+<main class="page-wrap">
+
+    <!-- study target -->
+    <div class="card">
+        <div class="card-header">
+            <span class="dot-blue"></span>
+            <h2>Study aim</h2>
+        </div>
+        <div class="card-body">
+            <p>The aim of this research study is to compare two treatments (fluid and blood pressure medication via a drip) for patients in hospital with sepsis</p>
+        </div>
+    </div>
+
+
+
+    <!-- ── Inclusion Criteria ── -->
+    <div class="card">
+        <div class="card-header">
+            <span class="dot-green"></span>
+            <h2>Inclusion Criteria</h2>
+        </div>
+        <div class="card-body">
+            <ul class="criteria-list include">
+                <li>Age &#8805; 18 years</li>
+
+                <li>Clinically suspected or proven infection resulting in principal reason for acute illness</li>
+
+                <li>SBP &lt; 90 mmHg or MAP of &lt; 65 mmHg</li>
+
+                <li>Measured serum lactate of &gt;2 mmol/L at the time of eligibility assessment (Nb The serum lactate should be
+                    measured 2 hours prior
+                    to determination of eligibility, where possible. Longer timeframes may be used and justified
+                    within the medical notes if, in the opinion of the investigator, the clinical status of the patient has not
+                    significantly improved in the time interval between lactate measurement and eligibility assessment. Lactate
+                    measurements more than 4 hours prior to eligibility assessment should not normally be used.)
+                </li>
+
+                <li>Hospital presentation within last 12 hours</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- ── Exclusion Criteria ── -->
+    <div class="card">
+        <div class="card-header">
+            <span class="dot-red"></span>
+            <h2>Exclusion Criteria</h2>
+        </div>
+        <div class="card-body">
+            <ul class="criteria-list exclude">
+                <li>&gt;1500ml of intravenous fluid prior to screening</li>
+
+                <li>Clinically judged to require immediate surgery (within one hour of eligibility assessment);</li>
+
+                <li>Immediate (&lt;1 hour) requirement for central venous access</li>
+
+                <li>Chronic renal replacement therapy</li>
+
+                <li>Known allergy/adverse reaction to norepinephrine</li>
+
+                <li>Palliation / end of life care (explicit decision by patient/family/carer in conjunction with clinical team
+                    that active treatment beyond symptomatic relief is not appropriate)
+
+                <li>Previous recruitment in the trial</li>
+
+                <li>Patients with permanent incapacity</li>
+
+                <li>Pregnancy. All women of childbearing potential (WoCBP) must have a negative urine or serum pregnancy test
+                    result completed as part of screening requirements.
+
+                    WoCBP are defined as fertile, following menarche and until becoming post-menopausal unless permanently
+                    sterile. Permanent sterilisation methods include hysterectomy, bilateral salpingectomy and bilateral
+                    oophorectomy. A postmenopausal state is defined as no menses for 12 months without an alternative medical
+                    cause.
+                </li>
+
+                <li>Other primary causes of shock (e.g. suspected cardiogenic shock, haemorrhagic shock, etc)</li>
+
+                <li>History or evidence of any other medical, neurological or psychological condition that would expose the
+                    subject to an undue risk of a significant Adverse Effect as determined by the clinical judgement of the
+                    investigator
+                </li>
+
+                <li>Participation in other clinical trials of investigational medicinal products</li>
+
+                <br>
+                <li style="list-style-type: none">Nb. Please note that the patients vital signs and intake of intravenous fluids
+                    may fluctuate. However, it is those vital signs and
+                    intravenous fluids reviewed at the time of eligibility that determine entry into the trial.
+                </li>
+
+            </ul>
+
+            <!--               highlighted comment
+            <div class="criteria-note">
+                <strong>Note:</strong> Anti-coagulation medication is <em>not</em> an exclusion criterion; however, the increased bleeding risk should be considered by the clinician.
+            </div>
+            -->
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <span class="dot-red"></span>
+            <h2>Enrollment conflicts</h2>
+        </div>
+        <div class="card-body">
+            <ul class="criteria-list exclude">
+                <li>Co-enrolment to an observational study is permitted but not to another clinical trial of a medicinal product
+                    (CTIMP); ie any other drug trial</li>
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- ── Step-by-step recruitment ── -->
+    <div class="card">
+        <div class="card-header">
+            <span class="dot"></span>
+            <h2>Step-by-step recruitment guide</h2>
+        </div>
+        <div class="card-body">
+
+            <div class="step-group">
+                <div class="step-group-label">Standard working hours (09:00 – 17:00)</div>
+                <div class="step-item">
+                    <span class="step-num">1</span>
+                    <span>Contact the ED Research Team when an eligible patient arrives in the ED — send a message via Epic chat to <strong>"ED Research Team"</strong> or phone <strong>217907</strong>.</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">2</span>
+                    <span>The ED Research Team will see the patient to arrange consent and randomisation.</span>
+                </div>
+            </div>
+
+
+            <div class="step-group">
+                <div class="step-group-label">Out of hours &amp; weekends</div>
+                <div class="step-item">
+                    <span class="step-num alt">1</span>
+                    <span>The trial is currently only recruiting within the working hours of the research Team</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ── Equipment locations ──
+    <div class="card">
+        <div class="card-header">
+            <span class="dot"></span>
+            <h2>Equipment &amp; materials locations</h2>
+        </div>
+        <div class="card-body">
+            <div class="location-grid">
+                <img src="images/comited-amb_bay_rack.png"       alt="Ambulatory bay rack">
+                <img src="images/comited-reception_box_180k.jpg" alt="Reception box">
+                <img src="images/ED-Research-cupboard.jpg"       alt="ED Research cupboard">
+            </div>
+        </div>
+    </div>
+    -->
+
+    <!-- ── Further information ── -->
+    <div class="card">
+        <div class="card-header">
+            <span class="dot"></span>
+            <h2>Further information</h2>
+        </div>
+        <div class="card-body">
+            <div class="links-row">
+                <a class="link-btn" href="https://www.evis.scot.nhs.uk/">
+                    Link to study website →
+                </a>
+                <!--
+                <a class="link-btn-ghost" href="">
+                    Additional link
+                </a>
+                -->
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    © EuReCa · CUH Emergency Department Research · Cambridge University Hospitals NHS Foundation Trust
+</footer>
+
+<script src="js/reusabletext.js"></script>
+
+<script>
+    const btn  = document.querySelector('.hamburger');
+    const menu = document.getElementById('mobile-menu');
+
+    btn.addEventListener('click', () => {
+        const isOpen = menu.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', isOpen);
+        btn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.remove('is-open');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-label', 'Open navigation menu');
+        });
+    });
+</script>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+    import { getAnalytics }  from "https://www.gstatic.com/firebasejs/9.6.10/firebase-analytics.js";
+
+    const firebaseConfig = {
+      apiKey:            "AIzaSyBnynr-TnZ3j1XPFanXPsp6yHMnKfyv_2A",
+      authDomain:        "emerg-sci.firebaseapp.com",
+      projectId:         "emerg-sci",
+      storageBucket:     "emerg-sci.appspot.com",
+      messagingSenderId: "323941930988",
+      appId:             "1:323941930988:web:d20fe9625921f8358952c9",
+      measurementId:     "G-5TJQS2QVQ7"
+    };
+
+    const app       = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+</script>
+
+</body>
+</html>

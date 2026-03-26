@@ -27,6 +27,43 @@
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Cabin&display=swap" rel="stylesheet"/>
 
+    <style>
+        table, th, td {
+        border: 1px solid #DCDCDC;
+        border-collapse: collapse;
+      }
+
+ .new-button {
+    padding: 12px 5px;
+    background-color: #c0fc0f;
+    border: 1px solid gray;
+    border-radius: 8px;
+    color: #464745;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+/* Hover/Active states for better feedback */
+.new-button:active, .quick-nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.new-button span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.brain-row {height: 120px;
+        }
+
+
+
+    </style>
 </head>
 <body style="background-color: #ffffff;">
 <div class="study-page-layout"  style="max-width:600px; margin:auto;" >
@@ -63,19 +100,39 @@
         <h2 style="color:red; display:inline-block;">We're still building this section</h2>
         <img style="display:inline-block; padding: 0px; margin: 0px; height: 6em; padding-left:1em;" src="images/ident-images/under-construction-img.jpg" alt="logo">
         <br>
-        <h3 style="color:red; display:inline-block;">This will be an intermediate page, with links to all three TBI studies and one line guidance about which patients each one recruits.<br><br>It takes too much detail to differentiate the studies in the 'I have a patient..' section"</h3>
+        <p style="display:inline-block;">We are recruiting to three different research studies involving head injury. Here is detail on how to identify which one your patient may be eligible to join. "</p>
+
+        <p style="display:inline-block;">Nb: Patients can / can <i>not</i> be co-enrolled in more than one study (to be clarified)</p>
+
+        <p>If co-enrollment is not permitted; the order of prioritisation is x &gt; y &gt; z</p>
 
         <br>
-        <br>    <br>    <br>
+        <br>
 
-        <img src="images/3P.png" alt="Study logo" class="studyLogoImage" style="height: 60px; padding-right:15px;">
-        <img src="images/POCKET.png" alt="Study logo" class="studyLogoImage" style="height: 60px; padding-right:15px;">
-        <img src="images/BRAINS-TBI.png" alt="Study logo" class="studyLogoImage" style="height: 60px; padding-right:15px;">
+        <table >
+            <tr class="brain-row">
+                <td style="text-align: center"><img src="images/POCKET.png" alt="Study logo" class="studyLogoImage" style="height: 60px; padding: 20px; "></td>
+                <td style="padding: 5px; ">Patient must be <b>≥18</b> years of age<br>GCS &gt;12<br>arrived within 24h of their injury</td>
+                <td style="padding: 5px; "><a href="trial-info-pocket.html"><button class="new-button" >Go to study</button></a></td>
+            </tr>
 
+            <tr class="brain-row">
+                <td style="text-align: center"><img src="images/BRAINS-TBI.png" alt="Study logo" class="studyLogoImage" style="height: 60px; padding: 20px; "></td>
+                <td style="padding: 5px; ">Patient must be <b>≥18</b> years of age<br>Clinical diagnosis of TBI<br>Being considered for CT head scan</td>
+                <td style="padding: 5px; "><a href="trial-info-brains-tbi.html"><button class="new-button" >Go to study</button></a></td>
+            </tr>
 
-
+            <tr class="brain-row">
+                <td style="text-align: center"><img src="images/3P.png" alt="Study logo" class="studyLogoImage" style="height: 60px; padding: 10px; "></td>
+                <td style="padding: 5px; ">Patient must be <b>≥16</b> years of age<br>GCS &gt;12<br>arrived within 24h of their injury</td>
+                <td style="padding: 5px; "><a href="trial-info-tbi.html"><button class="new-button" >Go to study</button></a></td>
+            </tr>
+        </table>
 
     </div>
+
+
 </div>
+
 </body>
 </html>

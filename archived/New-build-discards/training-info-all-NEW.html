@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EuReCa – Enrolment Training</title>
+
+    <meta http-equiv="content-type" content="No-Store">
+    <meta name="robots" content="noindex">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@200;300&display=swap" rel="stylesheet">
+
+    <style>
+        /* ─────────────────────────────────────────────
+           RESET & TOKENS  (identical to homepage)
+        ───────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+          --navy:    #0b1f3a;
+          --teal:    #0d7a7a;
+          --teal-lt: #10a8a8;
+          --amber:   #e8a020;
+          --fog:     #f2f5f8;
+          --white:   #ffffff;
+          --mid:     #5a6d82;
+          --border:  #d0dbe6;
+          --radius:  10px;
+        }
+
+        body {
+          font-family: 'DM Sans', sans-serif;
+          background: var(--fog);
+          color: var(--navy);
+          min-height: 100vh;
+          -webkit-text-size-adjust: 100%;
+        }
+
+        /* ─────────────────────────────────────────────
+           TOP BAR
+        ───────────────────────────────────────────── */
+        .topbar {
+          background: var(--navy);
+          padding: 0 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 64px;
+          position: sticky;
+          top: 0;
+          z-index: 200;
+          border-bottom: 3px solid var(--teal);
+        }
+        .topbar-img img {
+          display: block;
+          height: 40px;
+          width: auto;
+          max-width: 220px;
+          object-fit: contain;
+        }
+
+        .hamburger {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 28px;
+          height: 20px;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+          flex-shrink: 0;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .hamburger span {
+          display: block;
+          width: 100%;
+          height: 2px;
+          background: #9ab4cc;
+          border-radius: 2px;
+          transition: transform 0.25s, opacity 0.25s, background 0.2s;
+          transform-origin: center;
+        }
+        .hamburger:hover span, .hamburger:focus span { background: var(--white); }
+        .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+        .topbar-nav { display: none; }
+
+        .mobile-menu {
+          display: none;
+          flex-direction: column;
+          background: #0e2845;
+          border-bottom: 3px solid var(--teal);
+          position: sticky;
+          top: 64px;
+          z-index: 190;
+        }
+        .mobile-menu.is-open { display: flex; }
+        .mobile-menu a {
+          color: #9ab4cc;
+          text-decoration: none;
+          font-size: 0.9rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          padding: 1rem 1.25rem;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+          transition: background 0.15s, color 0.15s;
+          min-height: 52px;
+          display: flex;
+          align-items: center;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu a:hover, .mobile-menu a:focus { background: rgba(255,255,255,0.06); color: var(--white); }
+
+        /* ─────────────────────────────────────────────
+           HERO
+        ───────────────────────────────────────────── */
+        .hero {
+          background: linear-gradient(135deg, var(--navy) 0%, #12375e 60%, #0d5a6e 100%);
+          padding: 1.4rem 1rem 1.2rem;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+        .hero::before {
+          content: '';
+          position: absolute; inset: 0;
+          background: radial-gradient(ellipse 70% 120% at 50% 140%, rgba(13,122,122,0.35) 0%, transparent 70%);
+          pointer-events: none;
+        }
+        .hero-eyebrow {
+          font-size: 0.65rem;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--teal-lt);
+          margin-bottom: 0.35rem;
+        }
+        .hero h1 {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 1.5rem;
+          font-weight: 300;
+          color: var(--white);
+          letter-spacing: -0.03em;
+          line-height: 1.1;
+          margin-bottom: 0.45rem;
+        }
+        .hero p {
+          color: #9ab4cc;
+          font-size: 0.86rem;
+          line-height: 1.55;
+        }
+
+        /* ─────────────────────────────────────────────
+           BREADCRUMB
+        ───────────────────────────────────────────── */
+        .breadcrumb {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          padding: 0.65rem 0.75rem;
+          font-size: 0.75rem;
+          color: var(--mid);
+          max-width: 900px;
+          margin: 0 auto;
+        }
+        .breadcrumb a {
+          color: var(--teal);
+          text-decoration: none;
+          font-weight: 500;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb-sep { color: var(--border); }
+
+        /* ─────────────────────────────────────────────
+           PAGE WRAPPER
+        ───────────────────────────────────────────── */
+        .page-wrap {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 0.75rem 3rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        /* ─────────────────────────────────────────────
+           SHARED CARD
+        ───────────────────────────────────────────── */
+        .card {
+          background: var(--white);
+          border-radius: var(--radius);
+          border: 1px solid var(--border);
+          overflow: hidden;
+        }
+        .card-header {
+          background: var(--navy);
+          padding: 0.6rem 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        .card-header h2 {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.7rem;
+          font-weight: 300;
+          color: var(--white);
+          text-transform: uppercase;
+          letter-spacing: 0.12em;
+        }
+        .card-header .dot {
+          width: 7px; height: 7px;
+          border-radius: 50%;
+          background: var(--teal-lt);
+          flex-shrink: 0;
+        }
+
+        /* ─────────────────────────────────────────────
+           INTRO CARD
+        ───────────────────────────────────────────── */
+        .intro-body {
+          padding: 1rem 1.1rem;
+          font-size: 0.88rem;
+          color: #3d5266;
+          line-height: 1.65;
+        }
+
+        /* ─────────────────────────────────────────────
+           TRAINING SECTION CARD
+        ───────────────────────────────────────────── */
+        .training-card {
+          background: var(--white);
+          border-radius: var(--radius);
+          border: 1px solid var(--border);
+          overflow: hidden;
+          animation: fade-up 0.35s ease both;
+        }
+
+        .training-card-header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 0.9rem 1.1rem;
+          border-bottom: 1px solid var(--border);
+        }
+        .training-card-logo {
+          height: 48px;
+          width: auto;
+          max-width: 120px;
+          object-fit: contain;
+          flex-shrink: 0;
+          border-radius: 5px;
+          background: var(--navy);
+          padding: 4px 8px;
+        }
+        .training-card-logo.light-bg {
+          background: var(--fog);
+          border: 1px solid var(--border);
+        }
+        .training-card-title {
+          flex: 1;
+        }
+        .training-card-title .tag {
+          font-size: 0.62rem;
+          font-weight: 600;
+          color: var(--mid);
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          margin-bottom: 0.2rem;
+        }
+        .training-card-title h3 {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.95rem;
+          font-weight: 300;
+          color: var(--navy);
+          line-height: 1.3;
+          letter-spacing: -0.01em;
+        }
+
+        .training-card-body {
+          padding: 0.9rem 1.1rem;
+          font-size: 0.84rem;
+          color: #3d5266;
+          line-height: 1.65;
+        }
+        .training-card-body p + p { margin-top: 0.55rem; }
+
+        .training-card-body strong {
+          color: var(--navy);
+          font-weight: 600;
+        }
+
+        /* Requirements pill row */
+        .req-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.4rem;
+          margin: 0.75rem 0;
+        }
+        .req-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.3rem;
+          background: var(--fog);
+          border: 1px solid var(--border);
+          border-radius: 20px;
+          padding: 0.25rem 0.75rem;
+          font-size: 0.74rem;
+          font-weight: 500;
+          color: var(--navy);
+        }
+        .req-pill.required {
+          background: #e6f4f4;
+          border-color: var(--teal);
+          color: var(--teal);
+        }
+        .req-pill.not-required {
+          background: #f0f4f8;
+          color: var(--mid);
+          border-color: var(--border);
+          text-decoration: line-through;
+          opacity: 0.7;
+        }
+
+        /* Resource link buttons */
+        .resource-links {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          margin-top: 0.85rem;
+        }
+
+        .resource-btn {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 0.7rem 0.9rem;
+          border-radius: 8px;
+          text-decoration: none;
+          font-size: 0.83rem;
+          font-weight: 500;
+          color: var(--white);
+          transition: opacity 0.15s, transform 0.15s;
+          -webkit-tap-highlight-color: transparent;
+          border: none;
+          cursor: pointer;
+        }
+        .resource-btn:hover { opacity: 0.88; transform: translateX(2px); }
+        .resource-btn:active { transform: scale(0.98); }
+
+        .resource-btn .btn-thumb {
+          height: 36px;
+          width: auto;
+          border-radius: 4px;
+          object-fit: cover;
+          flex-shrink: 0;
+        }
+        .resource-btn .btn-label { flex: 1; line-height: 1.35; }
+        .resource-btn .btn-arrow { flex-shrink: 0; font-size: 1rem; opacity: 0.7; }
+
+        /* colour variants */
+        .btn-teal    { background: var(--teal); }
+        .btn-navy    { background: #1a3558; }
+        .btn-purple  { background: #522398; }
+        .btn-seagreen{ background: #2a7a50; }
+        .btn-coral   { background: #c05040; }
+
+        /* ─────────────────────────────────────────────
+           STEP NUMBER (for numbered steps like NIHR)
+        ───────────────────────────────────────────── */
+        .steps {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          margin: 0.75rem 0;
+          counter-reset: step;
+        }
+        .step-item {
+          display: flex;
+          gap: 0.75rem;
+          align-items: flex-start;
+          font-size: 0.83rem;
+          color: #3d5266;
+          line-height: 1.55;
+        }
+        .step-num {
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          background: var(--teal);
+          color: var(--white);
+          font-size: 0.65rem;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          margin-top: 1px;
+        }
+
+        /* ─────────────────────────────────────────────
+           FOOTER
+        ───────────────────────────────────────────── */
+        footer {
+          text-align: center;
+          padding: 1.2rem 1rem;
+          font-size: 0.72rem;
+          color: var(--mid);
+          border-top: 1px solid var(--border);
+          background: var(--white);
+        }
+
+        /* ─────────────────────────────────────────────
+           ANIMATIONS
+        ───────────────────────────────────────────── */
+        @keyframes fade-up {
+          from { opacity: 0; transform: translateY(6px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .training-card:nth-child(1) { animation-delay: 0.04s; }
+        .training-card:nth-child(2) { animation-delay: 0.10s; }
+        .training-card:nth-child(3) { animation-delay: 0.16s; }
+        .training-card:nth-child(4) { animation-delay: 0.22s; }
+        .training-card:nth-child(5) { animation-delay: 0.28s; }
+        .training-card:nth-child(6) { animation-delay: 0.34s; }
+
+        @media (prefers-reduced-motion: reduce) {
+          .training-card { animation: none; }
+        }
+
+        /* ─────────────────────────────────────────────
+           ≥ 640px
+        ───────────────────────────────────────────── */
+        @media (min-width: 640px) {
+          .topbar { height: 76px; padding: 0 1.5rem; }
+          .topbar-img img { height: 56px; max-width: 300px; }
+
+          .hamburger   { display: none; }
+          .mobile-menu { display: none !important; }
+          .topbar-nav  {
+            display: flex;
+            gap: 0.1rem;
+          }
+          .topbar-nav a {
+            color: #9ab4cc;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.45rem 0.8rem;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            white-space: nowrap;
+          }
+          .topbar-nav a:hover, .topbar-nav a:focus {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+          }
+          .topbar-nav a.active {
+            background: rgba(13,122,122,0.25);
+            color: var(--teal-lt);
+          }
+
+          .hero { padding: 1.9rem 1.5rem 1.65rem; }
+          .hero h1 { font-size: 1.85rem; }
+          .hero p  { font-size: 0.9rem; max-width: 460px; margin: 0 auto; }
+
+          .resource-links { flex-direction: row; flex-wrap: wrap; }
+          .resource-btn   { flex: 1; min-width: 200px; }
+        }
+
+        @media (min-width: 1080px) {
+          .topbar { height: 76px; padding: 0 2rem; }
+          .topbar-img img { height: 60px; max-width: 340px; }
+          .topbar-nav a { font-size: 0.85rem; padding: 0.45rem 0.9rem; }
+          .hero { padding: 2.5rem 2rem 2rem; }
+          .hero h1 { font-size: clamp(1.9rem, 2.5vw, 2.4rem); }
+          .hero p  { font-size: 0.95rem; max-width: 560px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="topbar-img">
+        <a href="../../public/index.html">
+            <img src="../../public/images/ident-images/eureca-basic-long-monserrat-cambridge-margins-dark.png" alt="EuReCa">
+        </a>
+    </div>
+
+    <button class="hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+    </button>
+
+    <nav class="topbar-nav" aria-label="Main navigation">
+        <a href="../../public/temp-placeholder.html">FAQ</a>
+        <a href="../../public/temp-placeholder.html">Blog</a>
+        <a href="../../public/training-info-all.html" class="active">Training</a>
+    </nav>
+</header>
+
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+    <a href="../../public/temp-placeholder.html">FAQ</a>
+    <a href="../../public/temp-placeholder.html">Blog</a>
+    <a href="../../public/training-info-all.html">Training</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <p class="hero-eyebrow">CUH Emergency Department</p>
+    <h1>Enrolment Training</h1>
+    <p>Everything you need to get on the delegation log — GCP certification and study-specific training guides.</p>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+    <a href="../../public/index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Training</span>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="page-wrap">
+
+    <!-- Intro -->
+    <div class="card">
+        <div class="card-header"><span class="dot"></span><h2>Getting started</h2></div>
+        <div class="intro-body">
+            Complete the relevant training materials below, then email the ED Research Team to arrange signing the delegation log. For most studies you will also need a current <strong>GCP certificate</strong> — start there if you don't have one.
+        </div>
+    </div>
+
+    <!-- ── 1. GCP ── -->
+    <div class="training-card">
+        <div class="training-card-header">
+            <img class="training-card-logo light-bg" src="../../public/images/nihr-master-logo.png" alt="NIHR logo">
+            <div class="training-card-title">
+                <div class="tag">Mandatory for most studies</div>
+                <h3>Good Clinical Practice (GCP)</h3>
+            </div>
+        </div>
+        <div class="training-card-body">
+            <p>A current GCP certificate is required to appear on the delegation log for most studies. The full course is <strong>free to all NHS staff</strong> via NIHR Learn and takes around <strong>three hours</strong> to complete.</p>
+
+            <div class="steps">
+                <div class="step-item">
+                    <span class="step-num">1</span>
+                    <span>Create a free NIHR Learn account at the link below.</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">2</span>
+                    <span>From the homepage, select <strong>"GCP and research delivery e-learning hub"</strong> and click <strong>Enrol me</strong>.</span>
+                </div>
+                <div class="step-item">
+                    <span class="step-num">3</span>
+                    <span>On completion, email your certificate to <strong>cuh.edresearchteam@nhs.net</strong>.</span>
+                </div>
+            </div>
+
+            <div class="resource-links">
+                <a class="resource-btn btn-teal" href="https://learn.nihr.ac.uk/">
+                    <img class="btn-thumb" src="../../public/images/GCP-2024-logo.jpg" alt="NIHR Learn">
+                    <span class="btn-label">Create an NIHR Learn account &amp; access the GCP course</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── 2. EVIS ── -->
+    <div class="training-card">
+        <div class="training-card-header">
+            <img class="training-card-logo" src="../../public/images/EVIS.jpg" alt="EVIS logo">
+            <div class="training-card-title">
+                <div class="tag">Sepsis · Adult</div>
+                <h3>Early Vasopressor in Sepsis (EVIS)</h3>
+            </div>
+        </div>
+        <div class="training-card-body">
+            <p>To be authorised to confirm eligibility and prescribe for the EVIS study, read the three slide-sets below and hold a current GCP certificate. Then email the ED Research Team to sign the delegation log.</p>
+
+            <div class="req-row">
+                <span class="req-pill required">✓ GCP required</span>
+                <span class="req-pill">Read 3 slide-sets</span>
+                <span class="req-pill">Email team to sign delegation log</span>
+            </div>
+
+            <div class="resource-links">
+                <a class="resource-btn btn-purple" href="../../public/resources/EVIS-Protocol-V3.0-30.01.25-Slides-1.pdf">
+                    <img class="btn-thumb" src="../../public/images/EVIS.protocol.jpg" alt="EVIS Protocol">
+                    <span class="btn-label">Protocol <span style="opacity:0.75;font-weight:400">(9 slides)</span></span>
+                    <span class="btn-arrow">→</span>
+                </a>
+                <a class="resource-btn btn-purple" href="../../public/resources/EVIS-IMP-Prescribing-V3.0-23.01.25-Slides%20(1).pdf">
+                    <img class="btn-thumb" src="../../public/images/EVIS-IMP-prescribing.jpg" alt="EVIS Prescribing">
+                    <span class="btn-label">Prescribing guide <span style="opacity:0.75;font-weight:400">(16 slides)</span></span>
+                    <span class="btn-arrow">→</span>
+                </a>
+                <a class="resource-btn btn-purple" href="../../public/resources/EVIS-PV-v2.0-21.07.2023%20(2).pdf">
+                    <img class="btn-thumb" src="../../public/images/EVIS-Pharmacovigilance.jpg" alt="EVIS Pharmacovigilance">
+                    <span class="btn-label">Pharmacovigilance <span style="opacity:0.75;font-weight:400">(15 slides)</span></span>
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── 3. Curly ── -->
+    <div class="training-card">
+        <div class="training-card-header">
+            <img class="training-card-logo" src="../../public/images/Curly-trial-logo.jpg" alt="Curly logo">
+            <div class="training-card-title">
+                <div class="tag">Paediatric · UTI</div>
+                <h3>CURLY</h3>
+            </div>
+        </div>
+        <div class="training-card-body">
+            <p>To confirm eligibility and prescribe for the Curly trial, review the two short slide-sets below, then email the Research Team to arrange being added to the delegation log.</p>
+
+            <div class="resource-links">
+                <a class="resource-btn btn-navy" href="https://nhs-my.sharepoint.com/:p:/g/personal/eoin_macdonald-nethercott_nhs_net/ER73UWltriFIm6QO54MrRtEBk7V7QGQbrNoWinBkUsFe2g?e=3d0cRc">
+                    <img class="btn-thumb" src="../../public/images/curly-slides-thumbnail.jpg" alt="Curly slides">
+                    <span class="btn-label">Curly – Study slides</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+                <a class="resource-btn btn-navy" href="https://nhs-my.sharepoint.com/:p:/g/personal/eoin_macdonald-nethercott_nhs_net/Eb6ymyPYOkdIjXKwL_ZzOCsB8bSaw68TwBgQMv-iOuut-g?e=LO2rLE">
+                    <img class="btn-thumb" src="../../public/images/curly-prescribing-slide-thumb.jpg" alt="Curly prescribing">
+                    <span class="btn-label">Curly – Prescribing guide</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── 4. uDCD ── -->
+    <div class="training-card">
+        <div class="training-card-header">
+            <img class="training-card-logo" src="../../public/images/uDCD_logo_02Jul24%20(1).png" alt="uDCD logo">
+            <div class="training-card-title">
+                <div class="tag">Cardiac Arrest · OHCA</div>
+                <h3>uDCD – Uncontrolled Donation After Circulatory Death</h3>
+            </div>
+        </div>
+        <div class="training-card-body">
+            <p>A feasibility study of uncontrolled donation after circulatory death. Complete the training presentation linked below.</p>
+
+            <div class="resource-links">
+                <a class="resource-btn btn-coral" href="https://nhs.sharepoint.com/:p:/r/sites/msteams_8ba11f/ED%20Shared%20Folders/Research/uDCD/uDCD_ED_24May24.pptx?d=w32ba088607844870b3f38474176da33d&csf=1&web=1&e=Bm5CmV">
+                    <img class="btn-thumb" src="../../public/images/udcd-cover-img.png" alt="uDCD training">
+                    <span class="btn-label">uDCD – Training presentation</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── 5. ASPECT ── -->
+    <div class="training-card">
+        <div class="training-card-header">
+            <img class="training-card-logo" src="../../public/images/ASPECT-logo.jpg" alt="ASPECT logo">
+            <div class="training-card-title">
+                <div class="tag">Pneumonia · Adult ≥50</div>
+                <h3>ASPECT – Aspirin in Pneumonia</h3>
+            </div>
+        </div>
+        <div class="training-card-body">
+            <p>Aspirin in patients with pneumonia for the prevention of cardiovascular events. A doctor must prescribe, but <strong>GCP is not required</strong> for this study. Training modules are on the ED SharePoint folder — your device must be logged into your nhs.net account to access them.</p>
+            <p>After completing the modules, follow the link in the folder to register on the online delegation log.</p>
+
+            <div class="req-row">
+                <span class="req-pill not-required">GCP not required</span>
+                <span class="req-pill">Doctor prescriber</span>
+                <span class="req-pill">Register on online delegation log</span>
+            </div>
+
+            <div class="resource-links">
+                <a class="resource-btn btn-coral" href="https://gbr01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fnhs.sharepoint.com%2F%3Af%3A%2Fs%2Fmsteams_8ba11f%2FEvIGfTVGrntCvSiBdiQA-DgBPAtjppYb9mtWCK_w5BrmbA%3Fe%3D9GdMnH&data=05%7C01%7Ceoin.macdonald-nethercott%40nhs.net%7C828c6979f6de4582aeef08dbcfc516b8%7C37c354b285b047f5b22207b48d774ee3%7C0%7C0%7C638332217612924804%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C3000%7C%7C%7C&sdata=BaxF5QhRKbRbyZCZgI%2BTo%2BP8uWcSf5F7wJFxljBmLKU%3D&reserved=0">
+                    <img class="btn-thumb" src="../../public/images/aspect-training-cover-img.jpg" alt="ASPECT training">
+                    <span class="btn-label">ASPECT – Training modules &amp; delegation log (SharePoint)</span>
+                    <span class="btn-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Contact card ── -->
+    <div class="card">
+        <div class="card-header"><span class="dot"></span><h2>Contact the Team</h2></div>
+        <div class="intro-body" style="display:flex; flex-wrap:wrap; gap:1.25rem; align-items:flex-start;">
+            <div style="flex:1; min-width:200px;">
+                <p>The EURECA team work <strong>Mon–Fri, 09:00–17:00</strong>. Once you've completed your training, get in touch to arrange signing the delegation log.</p>
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0.5rem; flex-shrink:0;">
+                <div style="display:flex; align-items:center; gap:0.55rem; font-size:0.82rem;">
+                    <span style="width:28px;height:28px;background:var(--fog);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.78rem;flex-shrink:0;">💬</span>
+                    Epic chat: <strong>ED Research Team</strong>
+                </div>
+                <div style="display:flex; align-items:center; gap:0.55rem; font-size:0.82rem;">
+                    <span style="width:28px;height:28px;background:var(--fog);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.78rem;flex-shrink:0;">📞</span>
+                    Tel: <strong>217907</strong>
+                </div>
+                <div style="display:flex; align-items:center; gap:0.55rem; font-size:0.82rem;">
+                    <span style="width:28px;height:28px;background:var(--fog);border:1px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.78rem;flex-shrink:0;">✉</span>
+                    cuh.edresearchteam@nhs.net
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer>
+    © EuReCa · CUH Emergency Department Research · Cambridge University Hospitals NHS Foundation Trust
+</footer>
+
+<script>
+    const btn  = document.querySelector('.hamburger');
+    const menu = document.getElementById('mobile-menu');
+
+    btn.addEventListener('click', () => {
+        const isOpen = menu.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', isOpen);
+        btn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.remove('is-open');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-label', 'Open navigation menu');
+        });
+    });
+</script>
+
+</body>
+</html>
