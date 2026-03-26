@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EuReCa – Recently Closed Studies</title>
+
+    <meta http-equiv="content-type" content="No-Store">
+    <meta name="robots" content="noindex">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Montserrat:wght@200;300&display=swap" rel="stylesheet">
+
+    <style>
+        /* ─────────────────────────────────────────────
+           RESET & TOKENS
+           Accent swap: cool slate-teal to signal "archived/closed"
+           vs. the warm amber of the training page
+        ───────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+          --navy:    #0b1f3a;
+          --fog:     #f2f5f8;
+          --white:   #ffffff;
+          --mid:     #5a6d82;
+          --border:  #d0dbe6;
+          --radius:  10px;
+
+          /* ── Accent swap: slate-teal for "closed / archived" ── */
+          --accent:      #1a6672;
+          --accent-lt:   #2a9aaa;
+          --accent-dim:  rgba(26,102,114,0.18);
+
+          /* hero gradient — cooler, slightly desaturated */
+          --hero-mid:    #1a2e3e;
+          --hero-end:    #0a2230;
+        }
+
+        body {
+          font-family: 'DM Sans', sans-serif;
+          background: var(--fog);
+          color: var(--navy);
+          min-height: 100vh;
+          -webkit-text-size-adjust: 100%;
+        }
+
+        /* ─────────────────────────────────────────────
+           TOP BAR
+        ───────────────────────────────────────────── */
+        .topbar {
+          background: var(--navy);
+          padding: 0 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 64px;
+          position: sticky;
+          top: 0;
+          z-index: 200;
+          border-bottom: 3px solid var(--accent);
+        }
+        .topbar-img img {
+          display: block;
+          height: 40px;
+          width: auto;
+          max-width: 220px;
+          object-fit: contain;
+        }
+
+        .hamburger {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: 28px; height: 20px;
+          background: none; border: none;
+          cursor: pointer; padding: 0;
+          flex-shrink: 0;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .hamburger span {
+          display: block;
+          width: 100%; height: 2px;
+          background: #9ab4cc;
+          border-radius: 2px;
+          transition: transform 0.25s, opacity 0.25s, background 0.2s;
+          transform-origin: center;
+        }
+        .hamburger:hover span, .hamburger:focus span { background: var(--white); }
+        .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+        .topbar-nav { display: none; }
+
+        .mobile-menu {
+          display: none;
+          flex-direction: column;
+          background: #0e2845;
+          border-bottom: 3px solid var(--accent);
+          position: sticky;
+          top: 64px;
+          z-index: 190;
+        }
+        .mobile-menu.is-open { display: flex; }
+        .mobile-menu a {
+          color: #9ab4cc;
+          text-decoration: none;
+          font-size: 0.9rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          padding: 1rem 1.25rem;
+          border-bottom: 1px solid rgba(255,255,255,0.06);
+          transition: background 0.15s, color 0.15s;
+          min-height: 52px;
+          display: flex;
+          align-items: center;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .mobile-menu a:last-child { border-bottom: none; }
+        .mobile-menu a:hover, .mobile-menu a:focus { background: rgba(255,255,255,0.06); color: var(--white); }
+
+        /* ─────────────────────────────────────────────
+           HERO  (cool slate gradient — distinct from training page)
+        ───────────────────────────────────────────── */
+        .hero {
+          background: linear-gradient(135deg, var(--navy) 0%, var(--hero-mid) 50%, var(--hero-end) 100%);
+          padding: 1.4rem 1rem 1.2rem;
+          text-align: center;
+          position: relative;
+          overflow: hidden;
+        }
+        .hero::before {
+          content: '';
+          position: absolute; inset: 0;
+          background: radial-gradient(ellipse 70% 120% at 50% 140%, rgba(26,102,114,0.3) 0%, transparent 70%);
+          pointer-events: none;
+        }
+        /* Subtle diagonal stripe texture to reinforce "archived" feel */
+        .hero::after {
+          content: '';
+          position: absolute; inset: 0;
+          background-image: repeating-linear-gradient(
+            -55deg,
+            transparent,
+            transparent 18px,
+            rgba(255,255,255,0.018) 18px,
+            rgba(255,255,255,0.018) 19px
+          );
+          pointer-events: none;
+        }
+        .hero-eyebrow {
+          font-size: 0.65rem;
+          font-weight: 600;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--accent-lt);
+          margin-bottom: 0.35rem;
+        }
+        .hero h1 {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 1.5rem;
+          font-weight: 300;
+          color: var(--white);
+          letter-spacing: -0.03em;
+          line-height: 1.1;
+          margin-bottom: 0.45rem;
+        }
+        .hero p {
+          color: #9ab4cc;
+          font-size: 0.86rem;
+          line-height: 1.55;
+        }
+
+        .hero-badges {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 0.4rem;
+          margin-top: 0.7rem;
+        }
+        .hero-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.3rem;
+          background: rgba(255,255,255,0.09);
+          border: 1px solid rgba(255,255,255,0.15);
+          border-radius: 20px;
+          padding: 0.2rem 0.7rem;
+          font-size: 0.7rem;
+          font-weight: 500;
+          color: #c8d8e8;
+          letter-spacing: 0.04em;
+        }
+
+        /* ─────────────────────────────────────────────
+           BACK BUTTON + BREADCRUMB ROW
+        ───────────────────────────────────────────── */
+        .nav-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.6rem 0.75rem;
+          max-width: 900px;
+          margin: 0 auto;
+          width: 100%;
+        }
+
+        .back-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          background: var(--white);
+          border: 1px solid var(--border);
+          border-radius: 7px;
+          padding: 0.35rem 0.85rem 0.35rem 0.65rem;
+          font-size: 0.78rem;
+          font-weight: 600;
+          color: var(--navy);
+          text-decoration: none;
+          transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
+          -webkit-tap-highlight-color: transparent;
+          cursor: pointer;
+          line-height: 1;
+        }
+        .back-btn:hover {
+          background: var(--fog);
+          border-color: var(--accent);
+          color: var(--accent);
+          transform: translateX(-2px);
+        }
+        .back-btn svg { flex-shrink: 0; }
+
+        .breadcrumb {
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          font-size: 0.75rem;
+          color: var(--mid);
+        }
+        .breadcrumb a {
+          color: var(--accent);
+          text-decoration: none;
+          font-weight: 500;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb-sep { color: var(--border); }
+
+        /* ─────────────────────────────────────────────
+           PAGE WRAPPER
+        ───────────────────────────────────────────── */
+        .page-wrap {
+          max-width: 900px;
+          margin: 0 auto;
+          padding: 0 0.75rem 3rem;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        /* ─────────────────────────────────────────────
+           INTRO CARD
+        ───────────────────────────────────────────── */
+        .card {
+          background: var(--white);
+          border-radius: var(--radius);
+          border: 1px solid var(--border);
+          overflow: hidden;
+        }
+        .card-header {
+          background: var(--navy);
+          padding: 0.6rem 1rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        .card-header h2 {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.7rem;
+          font-weight: 300;
+          color: var(--white);
+          text-transform: uppercase;
+          letter-spacing: 0.12em;
+        }
+        .card-header .dot {
+          width: 7px; height: 7px;
+          border-radius: 50%;
+          background: var(--accent-lt);
+          flex-shrink: 0;
+        }
+        .intro-body {
+          padding: 1rem 1.1rem;
+          font-size: 0.88rem;
+          color: #3d5266;
+          line-height: 1.65;
+        }
+
+        /* ─────────────────────────────────────────────
+           CLOSED STUDY CARD
+           Key visual difference: "closed" badge + muted
+           left-stripe + greyed logo treatment
+        ───────────────────────────────────────────── */
+        .study-card {
+          background: var(--white);
+          border-radius: var(--radius);
+          border: 1px solid var(--border);
+          border-left: 4px solid var(--border);  /* default muted stripe */
+          overflow: hidden;
+          animation: fade-up 0.35s ease both;
+          position: relative;
+        }
+
+        /* Per-study stripe colours — same palette as training page */
+        .study-card.stripe-teal    { border-left-color: var(--accent); }
+        .study-card.stripe-navy    { border-left-color: #2a4a72; }
+        .study-card.stripe-green   { border-left-color: #2a7a50; }
+        .study-card.stripe-purple  { border-left-color: #522398; }
+        .study-card.stripe-coral   { border-left-color: #c05040; }
+        .study-card.stripe-indigo  { border-left-color: #3a4e8c; }
+        .study-card.stripe-slate   { border-left-color: #4a6070; }
+
+        /* "Closed" watermark badge — top-right corner */
+        .closed-badge {
+          position: absolute;
+          top: 0.65rem;
+          right: 0.75rem;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.3rem;
+          background: #f0f4f8;
+          border: 1px solid #c8d8e4;
+          border-radius: 20px;
+          padding: 0.18rem 0.65rem;
+          font-size: 0.65rem;
+          font-weight: 600;
+          color: var(--mid);
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+        .closed-badge::before {
+          content: '';
+          display: inline-block;
+          width: 6px; height: 6px;
+          border-radius: 50%;
+          background: #b0bec8;
+          flex-shrink: 0;
+        }
+
+        .study-card-header {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 0.9rem 1.1rem;
+          border-bottom: 1px solid var(--border);
+          padding-right: 5.5rem; /* space for closed badge */
+        }
+        .study-card-logo {
+          height: 48px;
+          width: auto;
+          max-width: 120px;
+          object-fit: contain;
+          flex-shrink: 0;
+          border-radius: 5px;
+          /* Desaturate logos slightly — reinforces "archived" state */
+          filter: saturate(0.7) opacity(0.85);
+          background: var(--navy);
+          padding: 4px 8px;
+        }
+        .study-card-logo.light-bg {
+          background: var(--fog);
+          border: 1px solid var(--border);
+        }
+        .study-card-title { flex: 1; min-width: 0; }
+        .study-card-title .tag {
+          font-size: 0.62rem;
+          font-weight: 600;
+          color: var(--mid);
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          margin-bottom: 0.2rem;
+        }
+        .study-card-title h3 {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.95rem;
+          font-weight: 300;
+          color: var(--navy);
+          line-height: 1.3;
+          letter-spacing: -0.01em;
+        }
+        .study-card-title .closed-date {
+          font-size: 0.72rem;
+          color: var(--mid);
+          margin-top: 0.2rem;
+        }
+
+        .study-card-body {
+          padding: 0.9rem 1.1rem;
+          font-size: 0.84rem;
+          color: #3d5266;
+          line-height: 1.65;
+        }
+        .study-card-body p + p { margin-top: 0.55rem; }
+        .study-card-body strong { color: var(--navy); font-weight: 600; }
+
+        /* ─────────────────────────────────────────────
+           LINK BUTTON (single CTA per card)
+        ───────────────────────────────────────────── */
+        .card-link-row {
+          padding: 0 1.1rem 0.9rem;
+        }
+        .study-link-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          border-radius: 7px;
+          text-decoration: none;
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: var(--white);
+          background: var(--accent);
+          transition: opacity 0.15s, transform 0.15s;
+          letter-spacing: 0.02em;
+          -webkit-tap-highlight-color: transparent;
+        }
+        .study-link-btn:hover  { opacity: 0.85; transform: translateX(2px); }
+        .study-link-btn:active { transform: scale(0.98); }
+        .study-link-btn .arrow { opacity: 0.75; }
+
+        /* Colour variants to match stripe */
+        .btn-navy   { background: #1a3558; }
+        .btn-green  { background: #2a7a50; }
+        .btn-purple { background: #522398; }
+        .btn-coral  { background: #c05040; }
+        .btn-indigo { background: #3a4e8c; }
+        .btn-slate  { background: #4a6070; }
+
+        /* ─────────────────────────────────────────────
+           CONTACT CARD
+        ───────────────────────────────────────────── */
+        .contact-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1.25rem;
+          align-items: flex-start;
+        }
+        .contact-text { flex: 1; min-width: 200px; }
+        .contact-items {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          flex-shrink: 0;
+        }
+        .contact-item {
+          display: flex;
+          align-items: center;
+          gap: 0.55rem;
+          font-size: 0.82rem;
+        }
+        .contact-icon {
+          width: 28px; height: 28px;
+          background: var(--fog);
+          border: 1px solid var(--border);
+          border-radius: 6px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 0.78rem;
+          flex-shrink: 0;
+        }
+
+        /* ─────────────────────────────────────────────
+           FOOTER
+        ───────────────────────────────────────────── */
+        footer {
+          text-align: center;
+          padding: 1.2rem 1rem;
+          font-size: 0.72rem;
+          color: var(--mid);
+          border-top: 1px solid var(--border);
+          background: var(--white);
+        }
+
+        /* ─────────────────────────────────────────────
+           ANIMATIONS
+        ───────────────────────────────────────────── */
+        @keyframes fade-up {
+          from { opacity: 0; transform: translateY(6px); }
+          to   { opacity: 1; transform: translateY(0); }
+        }
+        .study-card:nth-child(1) { animation-delay: 0.04s; }
+        .study-card:nth-child(2) { animation-delay: 0.10s; }
+        .study-card:nth-child(3) { animation-delay: 0.16s; }
+        .study-card:nth-child(4) { animation-delay: 0.22s; }
+        .study-card:nth-child(5) { animation-delay: 0.28s; }
+        .study-card:nth-child(6) { animation-delay: 0.34s; }
+        .study-card:nth-child(7) { animation-delay: 0.40s; }
+        .study-card:nth-child(8) { animation-delay: 0.46s; }
+        .study-card:nth-child(9) { animation-delay: 0.52s; }
+        .study-card:nth-child(10){ animation-delay: 0.58s; }
+        .study-card:nth-child(11){ animation-delay: 0.64s; }
+        .study-card:nth-child(12){ animation-delay: 0.70s; }
+
+        @media (prefers-reduced-motion: reduce) { .study-card { animation: none; } }
+
+        /* ─────────────────────────────────────────────
+           ≥ 640px
+        ───────────────────────────────────────────── */
+        @media (min-width: 640px) {
+          .topbar { height: 76px; padding: 0 1.5rem; }
+          .topbar-img img { height: 56px; max-width: 300px; }
+          .hamburger   { display: none; }
+          .mobile-menu { display: none !important; }
+          .topbar-nav  { display: flex; gap: 0.1rem; }
+          .topbar-nav a {
+            color: #9ab4cc;
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.45rem 0.8rem;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            white-space: nowrap;
+          }
+          .topbar-nav a:hover, .topbar-nav a:focus {
+            background: rgba(255,255,255,0.1);
+            color: var(--white);
+          }
+          .topbar-nav a.active {
+            background: var(--accent-dim);
+            color: var(--accent-lt);
+          }
+          .hero { padding: 1.9rem 1.5rem 1.65rem; }
+          .hero h1 { font-size: 1.85rem; }
+          .hero p  { font-size: 0.9rem; max-width: 480px; margin: 0 auto; }
+        }
+
+        @media (min-width: 1080px) {
+          .topbar { height: 76px; padding: 0 2rem; }
+          .topbar-img img { height: 60px; max-width: 340px; }
+          .topbar-nav a { font-size: 0.85rem; padding: 0.45rem 0.9rem; }
+          .hero { padding: 2.5rem 2rem 2rem; }
+          .hero h1 { font-size: clamp(1.9rem, 2.5vw, 2.4rem); }
+          .hero p  { font-size: 0.95rem; max-width: 560px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="topbar-img">
+        <a href="index.html">
+            <img src="images/ident-images/eureca-basic-long-monserrat-cambridge-margins-dark.png" alt="EuReCa">
+        </a>
+    </div>
+
+    <button class="hamburger" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+    </button>
+
+    <nav class="topbar-nav" aria-label="Main navigation">
+        <a href="temp-placeholder.html">FAQ</a>
+        <a href="temp-placeholder.html">Blog</a>
+        <a href="index.html">Home</a>
+    </nav>
+</header>
+
+<nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+    <a href="temp-placeholder.html">FAQ</a>
+    <a href="temp-placeholder.html">Blog</a>
+    <a href="index.html">Home</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <p class="hero-eyebrow">CUH Emergency Department · Study Archive</p>
+    <h1>Recently Closed Studies</h1>
+    <p>Studies we have recruited to at CUH that have now closed to enrolment. Links to trial websites and results where available.</p>
+
+</section>
+
+<br>
+
+<!-- MAIN CONTENT -->
+<main class="page-wrap">
+
+    <!-- ── Intro ── -->
+    <div class="card">
+        <div class="card-header"><span class="dot"></span><h2>About this page</h2></div>
+        <div class="intro-body">
+            Here you will find studies that we recruited to at CUH and have recently closed to enrolment. Links to the trial websites and published results are included where available. If you have questions about any of these studies, contact the ED Research Team.
+        </div>
+    </div>
+
+    <!-- ── DRAFT3 ── -->
+    <div class="study-card stripe-indigo">
+        <span class="closed-badge">Closed Dec 2025</span>
+        <div class="study-card-header">
+            <img class="study-card-logo light-bg" src="images/draft3-logo.png" alt="DRAFT3 logo">
+            <div class="study-card-title">
+                <div class="tag">Orthopaedic · Adult</div>
+                <h3>DRAFT3</h3>
+            </div>
+        </div>
+        <div class="study-card-body">
+            <p>This study compared cast versus removable splint for adults with a distal radius fracture that did not require manipulation.</p>
+        </div>
+        <div class="card-link-row">
+            <a class="study-link-btn btn-indigo" href="https://draft3.digitrial.com">
+                Trial website <span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ── Dexacell ── -->
+    <div class="study-card stripe-coral">
+        <span class="closed-badge">Closed Nov 2025</span>
+        <div class="study-card-header">
+            <img class="study-card-logo light-bg" src="images/dexacell-study-logo.jpg" alt="Dexacell logo">
+            <div class="study-card-title">
+                <div class="tag">Infection · Adult</div>
+                <h3>Dexacell</h3>
+            </div>
+        </div>
+        <div class="study-card-body">
+            <p>Looking at the benefit of steroids in cellulitis.</p>
+        </div>
+        <div class="card-link-row">
+            <a class="study-link-btn btn-coral" href="https://sites.exeter.ac.uk/dexacell/participant-information/">
+                Trial website <span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ── BronchStart ── -->
+    <div class="study-card stripe-navy">
+        <span class="closed-badge">Closed Jul 2025</span>
+        <div class="study-card-header">
+            <img class="study-card-logo" src="images/BronchStart.jpg" alt="BronchStart logo">
+            <div class="study-card-title">
+                <div class="tag">Paediatric · Respiratory</div>
+                <h3>BronchStart</h3>
+            </div>
+        </div>
+        <div class="study-card-body">
+            <p>This study examined the effect the COVID-19 pandemic has had on the way RSV cases present, and included an associated arm looking at vaccine uptake.</p>
+        </div>
+        <div class="card-link-row">
+            <a class="study-link-btn btn-navy" href="https://resc-eu.org/news/latest-news/bronchstart-study-will-help-predict-rsv-epidemics/">
+                Study site <span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ── CONSEPT ──
+    <div class="study-card stripe-teal">
+        <span class="closed-badge">Closed May 2025</span>
+        <div class="study-card-header">
+            <img class="study-card-logo light-bg" src="images/CONSEPT_logo_final-150x150.png" alt="CONSEPT logo">
+            <div class="study-card-title">
+                <div class="tag">Respiratory · Adult</div>
+                <h3>CONSEPT</h3>
+            </div>
+        </div>
+        <div class="study-card-body">
+            <p>This RCT looked at the conservative management of spontaneous pneumothoraces in the Emergency Department.</p>
+        </div>
+        <div class="card-link-row">
+            <a class="study-link-btn" href="https://www.bristol-trials-centre.bristol.ac.uk/studies/consept/">
+                Trial website <span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
+-->
+
+
+    <!-- ── EASY ── -->
+    <div class="study-card stripe-green">
+        <span class="closed-badge">Closed Mar 2025</span>
+        <div class="study-card-header">
+            <img class="study-card-logo light-bg" src="images/easy-logo-thumbnail-land-updated.jpg" alt="EASY logo">
+            <div class="study-card-title">
+                <div class="tag">Paediatric · UTI</div>
+                <h3>EASY</h3>
+            </div>
+        </div>
+        <div class="study-card-body">
+            <p>UTI in children under 3 months old.</p>
+        </div>
+        <div class="card-link-row">
+            <a class="study-link-btn btn-green" href="https://pureadmin.qub.ac.uk/ws/portalfiles/portal/657859406/og.pdf">
+                Study results <span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ── COMITED ── -->
+    <div class="study-card stripe-slate">
+        <span class="closed-badge">Closed Jan 2025</span>
+        <div class="study-card-header">
+            <img class="study-card-logo light-bg" src="images/comited-logo-white-bg.jpg" alt="COMITED logo">
+            <div class="study-card-title">
+                <div class="tag">Trauma · Respiratory</div>
+                <h3>COMITED</h3>
+            </div>
+        </div>
+        <div class="study-card-body">
+            <p>A multicentre randomised trial that evaluated whether minor traumatic pneumothoraces can be managed without an intercostal chest drain.</p>
+        </div>
+        <div class="card-link-row">
+            <a class="study-link-btn btn-slate" href="https://comited.blogs.bristol.ac.uk/">
+                Trial website <span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ── Aspired ── -->
+    <div class="study-card stripe-purple">
+        <span class="closed-badge">Closed</span>
+        <div class="study-card-header">
+            <img class="study-card-logo light-bg" src="images/aspired.png" alt="Aspired logo">
+            <div class="study-card-title">
+                <div class="tag">Cardiology · Adult</div>
+                <h3>Aspired</h3>
+            </div>
+        </div>
+        <div class="study-card-body">
+            <p>This study looked at the use of 14-day ambulatory monitoring for patients with unexplained syncope.</p>
+        </div>
+        <div class="card-link-row">
+            <a class="study-link-btn btn-purple" href="https://usher.ed.ac.uk/edinburgh-clinical-trials/our-studies/all-current-studies/aspired-study">
+                In follow-up <span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ── PicBone ── -->
+    <div class="study-card stripe-navy">
+        <span class="closed-badge">Closed</span>
+        <div class="study-card-header">
+            <img class="study-card-logo" src="images/PICbone_logo.jpg" alt="PicBone logo">
+            <div class="study-card-title">
+                <div class="tag">Paediatric · Orthopaedic</div>
+                <h3>PicBone</h3>
+            </div>
+        </div>
+        <div class="study-card-body">
+            <p>This study looked at the use of ultrasound and MRI to assess the possibility of bacterial bone infection in children presenting with painful limbs.</p>
+        </div>
+        <div class="card-link-row">
+            <a class="study-link-btn btn-navy" href="https://www.ndorms.ox.ac.uk/research/clinical-trials/current-trials-and-studies/picbone">
+                Trial website <span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ── Swift ── -->
+    <div class="study-card stripe-coral">
+        <span class="closed-badge">Closed</span>
+        <div class="study-card-header">
+            <img class="study-card-logo light-bg" src="images/swift-logo.png" alt="Swift logo">
+            <div class="study-card-title">
+                <div class="tag">Trauma · Prehospital</div>
+                <h3>Swift</h3>
+            </div>
+        </div>
+        <div class="study-card-body">
+            <p>This study looked at giving whole blood to hypotensive trauma patients by prehospital teams, compared with standard blood components. There may be a few patients still to come in — <a href="../archived/archived-pages/trial-info-swift.html" style="color:var(--accent);font-weight:500;">view the step-by-step guide</a>.</p>
+        </div>
+        <div class="card-link-row">
+            <a class="study-link-btn btn-coral" href="https://www.londonsairambulance.org.uk/news-and-stories/clinical-stories/results-published-swift-trial">
+                Results news <span class="arrow">→</span>
+            </a>
+            <a class="study-link-btn btn-coral" href="https://www.nhsbt.nhs.uk/clinical-trials-unit/trials-and-studies/blood-and-transfusion/swift/">
+                Trial website <span class="arrow">→</span>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- ── TAP ── -->
+    <div class="study-card stripe-slate">
+        <span class="closed-badge">Closed · Terminated Early</span>
+        <div class="study-card-header">
+            <img class="study-card-logo light-bg" src="images/TAP-logo.jpg" alt="TAP logo">
+            <div class="study-card-title">
+                <div class="tag">Trauma · Major Bleeding</div>
+                <h3>TAP</h3>
+            </div>
+        </div>
+        <div class="study-card-body">
+            <p>A multicentre randomised trial evaluating the use of Beriplex to improve survival in patients with traumatic injury and acute major bleeding.</p>
+            <p>The study was terminated early because recruitment was slower than anticipated. No safety concerns were identified. Publication is not anticipated.</p>
+        </div>
+        <div class="card-link-row">
+            <a class="study-link-btn btn-slate" href="https://sites.uab.edu/tap-trial/uab-home/">
+                Study statement <span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- ── PRINCE-SSP ── -->
+    <div class="study-card stripe-green">
+        <span class="closed-badge">Closed</span>
+        <div class="study-card-header">
+            <img class="study-card-logo light-bg" src="images/prince-ssp-logo.jpg" alt="PRINCE-SSP logo">
+            <div class="study-card-title">
+                <div class="tag">Respiratory · Adult</div>
+                <h3>PRINCE-SSP</h3>
+            </div>
+        </div>
+        <div class="study-card-body">
+            <p>Pragmatic non-inferiority randomised trial investigating needle aspiration versus chest drain for secondary spontaneous pneumothorax.</p>
+        </div>
+        <div class="card-link-row">
+            <a class="study-link-btn btn-slate" href="https://thorax.bmj.com/content/80/Suppl_2/A106.1">
+                Interim demographics statement<span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+
+    <div class="ident-row">
+        <img src="images/ident-images/emerg-sci-ident-96.png" alt="Emerg-sci logo" class="ident-row-images"
+             style="margin-right: 12px; height: 40px; ">
+
+        <img src="images/ident-images/ident-eureca.png" alt="Eureca logo" class="ident-row-images"
+             style="margin-right: 12px; height: 40px; ">
+
+        <img src="images/ident-images/ident-NIHR.png" alt="NIHR logo" class="ident-row-images"
+             style="margin-right: 12px; height: 40px; ">
+
+        <img src="images/ident-images/ident-NHS.png" alt="NHS logo" class="ident-row-images"
+             style="margin-right: 12px;  height: 40px; ">
+    </div>
+
+
+
+
+
+</main>
+
+<footer>
+    © EuReCa · CUH Emergency Department Research · Cambridge University Hospitals NHS Foundation Trust
+</footer>
+
+<script>
+    const btn  = document.querySelector('.hamburger');
+    const menu = document.getElementById('mobile-menu');
+
+    btn.addEventListener('click', () => {
+        const isOpen = menu.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', isOpen);
+        btn.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+    });
+
+    menu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.remove('is-open');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-label', 'Open navigation menu');
+        });
+    });
+</script>
+
+</body>
+</html>
