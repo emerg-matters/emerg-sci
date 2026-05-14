@@ -709,12 +709,49 @@ If needed there is a card below for images.
                 <a class="link-btn" href="https://www.bristol-trials-centre.bristol.ac.uk/studies/aspect/">
                     Link to study website →
                 </a>
-                <!--
-                <a class="link-btn-ghost" href="">
-                    Additional link
+
+                <br>
+
+                <a class="link-btn" href="https://ceser.octru.ox.ac.uk/faq.html">
+                    Link to patient information page →
                 </a>
-                -->
+
+                <script>
+                    function myQRCFunction() {
+                    var x = document.getElementById("myDIV");
+                    if (x.style.display === "none") {
+                    x.style.display = "block";
+                    } else {
+                    x.style.display = "none";
+                    }
+                    // Scrolls smoothly to the very bottom of the page
+                  window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                    }
+                </script>
+
+
+                <button onclick="myQRCFunction()" class="link-btn" style="border-color: orange">pip QR code link</button>
+
+                <div id="myDIV" style="display:none">
+
+                    <img style="width: 400px; max-width: 90%;"  src="images/curly-patient-info-page-QRc.png.png" alt="QR code link to patient information leaflet">
+
+
+                </div>
+
+
+
+
+
             </div>
+
+            <!--
+            Add in the code block to put a PIP/PIS QR code reference.
+
+            -->
+
+
+
         </div>
     </div>
 
